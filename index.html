@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="id" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M. Ilham Ghazali Simarmata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+
+    <div id="scroll-line"></div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+      <div class="nav-logo"><span>Ilham</span>Ghazali</div>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Project</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+      <div class="nav-right">
+        <div
+          class="theme-toggle"
+          id="themeToggle"
+          title="Toggle Dark/Light Mode"
+        >
+          <span class="theme-toggle-icon moon">🌙</span>
+          <span class="theme-toggle-icon sun">☀️</span>
+        </div>
+        <button
+          class="btn-contact"
+          onclick="
+            document
+              .getElementById('contact')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          Contact Me
+        </button>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Project</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <section id="home">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="tag">
+            <span class="tag-dot"></span> Open to Work — Junior Developer
+          </div>
+          <h1>
+            Hello, I'm<br />
+            <span class="name">M. Ilham Ghazali</span>
+            <span class="line2">Simarmata</span>
+          </h1>
+          <div class="typewriter-wrap">
+            Saya seorang — <span class="typewriter-text"></span
+            ><span class="cursor-blink"></span>
+          </div>
+          <p>
+            Mahasiswa aktif yang passionate di bidang pengembangan web &
+            teknologi digital. Siap membangun solusi kreatif dan inovatif untuk
+            kebutuhan Anda.
+          </p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn-primary">
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+                />
+              </svg>
+              Lihat Project
+            </a>
+            <a href="#" class="btn-secondary" download>
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"
+                />
+              </svg>
+              Download CV
+            </a>
+          </div>
+          <div class="hero-socials">
+            <a href="#" class="social-link" title="GitHub">
+              <svg
+                width="18"
+                height="18"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.12.82-.26.82-.58l-.01-2.24c-3.34.73-4.04-1.45-4.04-1.45-.54-1.38-1.32-1.74-1.32-1.74-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22l-.01 3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-link" title="LinkedIn">
+              <svg
+                width="18"
+                height="18"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-link" title="Instagram">
+              <svg
+                width="18"
+                height="18"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a href="mailto:ilham@email.com" class="social-link" title="Email">
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </a>
+          </div>
+          <div class="stats-row">
+            <div class="stat">
+              <div class="num" data-count="5">0</div>
+              <div class="lbl">Projects</div>
+            </div>
+            <div class="stat">
+              <div class="num" data-count="2">0</div>
+              <div class="lbl">Tahun Belajar</div>
+            </div>
+            <div class="stat">
+              <div class="num" data-count="3">0</div>
+              <div class="lbl">Sertifikat</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-avatar-wrap">
+            <div class="avatar-ring r2"></div>
+            <div class="avatar-ring r1"></div>
+            <div class="avatar-blob">
+              <div class="avatar-placeholder">
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                <span>Your Photo</span>
+              </div>
+            </div>
+            <div class="float-badge b1">
+              <span class="badge-dot"></span> Available for hire
+            </div>
+            <div class="float-badge b2">
+              <span class="badge-icon">💻</span> Junior Developer
+            </div>
+            <div class="float-badge b3">
+              <span class="badge-icon">🎓</span> Mahasiswa
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-header reveal">
+        <div class="section-tag">// Tentang Saya</div>
+        <h2 class="section-title">Kenalan Dulu Yuk!</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-inner">
+        <div class="about-image-wrap reveal">
+          <div class="about-img-frame">
+            <div class="about-img-placeholder">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                viewBox="0 0 24 24"
+              >
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <span>Upload Foto Kamu</span>
+            </div>
+          </div>
+          <div class="about-deco"></div>
+          <div class="exp-badge">
+            <div class="num">1+</div>
+            <div class="lbl">Tahun</div>
+          </div>
+        </div>
+        <div class="about-content reveal reveal-delay-2">
+          <h3>
+            M. Ilham Ghazali <span style="color: var(--accent)">Simarmata</span>
+          </h3>
+          <p>
+            Halo! Saya mahasiswa aktif di Politeknik Negeri Indramayu yang juga
+            passionate dalam dunia pengembangan web dan teknologi digital. Saya
+            percaya bahwa belajar terbaik adalah dengan langsung praktek dan
+            membangun sesuatu yang nyata.
+          </p>
+          <p>
+            Saat ini saya sedang mengembangkan skill di bidang front-end dan
+            back-end development, sambil aktif mencari pengalaman kerja dan
+            kolaborasi project. Saya selalu bersemangat untuk belajar teknologi
+            baru dan siap menghadapi tantangan di dunia digital yang terus
+            berkembang.
+          </p>
+          <div class="skills-grid">
+            <div class="skill-chip">HTML/CSS</div>
+            <div class="skill-chip">JavaScript</div>
+            <div class="skill-chip">React</div>
+            <div class="skill-chip">Node.js</div>
+            <div class="skill-chip">PHP</div>
+            <div class="skill-chip">MySQL</div>
+            <div class="skill-chip">Git</div>
+            <div class="skill-chip">Figma</div>
+            <div class="skill-chip">Bootstrap</div>
+          </div>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap">
+            <a href="#" class="btn-primary" style="margin-top: 0.5rem" download>
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"
+                />
+              </svg>
+              Download CV
+            </a>
+            <a href="#contact" class="btn-secondary" style="margin-top: 0.5rem">
+              ✉️ Email Me
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-header reveal">
+        <div class="section-tag">// Apa Yang Saya Tawarkan</div>
+        <h2 class="section-title">Professional Services</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="services-grid" style="max-width: 1200px; margin: 0 auto">
+        <div class="service-card tilt-card reveal reveal-delay-1">
+          <div class="service-icon">🌐</div>
+          <h3>Web Development</h3>
+          <p>
+            Membangun website modern dan responsif menggunakan teknologi
+            terkini. Dari landing page sederhana hingga aplikasi web yang
+            kompleks.
+          </p>
+        </div>
+        <div class="service-card tilt-card reveal reveal-delay-2">
+          <div class="service-icon">🎨</div>
+          <h3>UI/UX Design</h3>
+          <p>
+            Mendesain antarmuka yang intuitif, menarik, dan berfokus pada
+            pengalaman pengguna yang optimal menggunakan Figma dan tools modern.
+          </p>
+        </div>
+        <div class="service-card tilt-card reveal reveal-delay-3">
+          <div class="service-icon">📱</div>
+          <h3>Responsive Design</h3>
+          <p>
+            Memastikan website tampil sempurna di semua perangkat — desktop,
+            tablet, dan mobile dengan pendekatan mobile-first.
+          </p>
+        </div>
+        <div class="service-card tilt-card reveal reveal-delay-1">
+          <div class="service-icon">⚙️</div>
+          <h3>Backend Development</h3>
+          <p>
+            Mengembangkan API dan logika server yang efisien menggunakan
+            Node.js, PHP, serta integrasi database MySQL dan MongoDB.
+          </p>
+        </div>
+        <div class="service-card tilt-card reveal reveal-delay-2">
+          <div class="service-icon">📊</div>
+          <h3>Content Management</h3>
+          <p>
+            Membantu setup dan kustomisasi CMS seperti WordPress untuk kemudahan
+            manajemen konten tanpa perlu coding.
+          </p>
+        </div>
+        <div class="service-card tilt-card reveal reveal-delay-3">
+          <div class="service-icon">🚀</div>
+          <h3>Performance Optimization</h3>
+          <p>
+            Mengoptimalkan kecepatan loading dan performa website agar
+            memberikan pengalaman terbaik bagi setiap pengunjung.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-header reveal">
+        <div class="section-tag">// Karya Saya</div>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-filter reveal">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Web App</button>
+        <button class="filter-btn">UI Design</button>
+        <button class="filter-btn">Mobile</button>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+              <span>Project Screenshot</span>
+            </div>
+            <div class="project-overlay">
+              <button class="overlay-btn">🔗</button>
+              <button class="overlay-btn">👁️</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">React</span
+              ><span class="project-tag">Node.js</span>
+            </div>
+            <h3>Project Title 1</h3>
+            <p>
+              Deskripsi singkat project ini. Isi dengan detail project kamu yang
+              sesungguhnya.
+            </p>
+          </div>
+        </div>
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+              <span>Project Screenshot</span>
+            </div>
+            <div class="project-overlay">
+              <button class="overlay-btn">🔗</button>
+              <button class="overlay-btn">👁️</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">PHP</span
+              ><span class="project-tag">MySQL</span>
+            </div>
+            <h3>Project Title 2</h3>
+            <p>
+              Deskripsi singkat project ini. Isi dengan detail project kamu yang
+              sesungguhnya.
+            </p>
+          </div>
+        </div>
+        <div class="project-card reveal reveal-delay-3">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+              <span>Project Screenshot</span>
+            </div>
+            <div class="project-overlay">
+              <button class="overlay-btn">🔗</button>
+              <button class="overlay-btn">👁️</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">Figma</span
+              ><span class="project-tag">UI/UX</span>
+            </div>
+            <h3>Project Title 3</h3>
+            <p>
+              Deskripsi singkat project ini. Isi dengan detail project kamu yang
+              sesungguhnya.
+            </p>
+          </div>
+        </div>
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+              <span>Project Screenshot</span>
+            </div>
+            <div class="project-overlay">
+              <button class="overlay-btn">🔗</button>
+              <button class="overlay-btn">👁️</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span
+              ><span class="project-tag">CSS</span>
+            </div>
+            <h3>Project Title 4</h3>
+            <p>
+              Deskripsi singkat project ini. Isi dengan detail project kamu yang
+              sesungguhnya.
+            </p>
+          </div>
+        </div>
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+              <span>Project Screenshot</span>
+            </div>
+            <div class="project-overlay">
+              <button class="overlay-btn">🔗</button>
+              <button class="overlay-btn">👁️</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">Bootstrap</span
+              ><span class="project-tag">Laravel</span>
+            </div>
+            <h3>Project Title 5</h3>
+            <p>
+              Deskripsi singkat project ini. Isi dengan detail project kamu yang
+              sesungguhnya.
+            </p>
+          </div>
+        </div>
+        <div class="project-card reveal reveal-delay-3">
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <path d="M8 21h8M12 17v4" />
+              </svg>
+              <span>Project Screenshot</span>
+            </div>
+            <div class="project-overlay">
+              <button class="overlay-btn">🔗</button>
+              <button class="overlay-btn">👁️</button>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span class="project-tag">Vue.js</span
+              ><span class="project-tag">Firebase</span>
+            </div>
+            <h3>Project Title 6</h3>
+            <p>
+              Deskripsi singkat project ini. Isi dengan detail project kamu yang
+              sesungguhnya.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 3rem" class="reveal">
+        <a href="#" class="btn-secondary"> More Projects → </a>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-header reveal">
+        <div class="section-tag">// Perjalanan Saya</div>
+        <h2 class="section-title">Experience & Education</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023 — Sekarang</div>
+          <div class="timeline-card">
+            <h3>Junior Web Developer (Freelance)</h3>
+            <div class="org">🔧 Self-Employed</div>
+            <p>
+              Mengerjakan berbagai project web untuk klien, mulai dari landing
+              page, company profile, hingga web app sederhana. Fokus pada clean
+              code dan user experience.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022 — Sekarang</div>
+          <div class="timeline-card">
+            <h3>Mahasiswa Aktif — [Nama Jurusan]</h3>
+            <div class="org">🎓 [Nama Universitas]</div>
+            <p>
+              Sedang menempuh pendidikan S1 di bidang [jurusan kamu]. Aktif
+              dalam organisasi kemahasiswaan dan berbagai project akademik.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023</div>
+          <div class="timeline-card">
+            <h3>Web Development Bootcamp</h3>
+            <div class="org">🏅 [Nama Lembaga / Platform]</div>
+            <p>
+              Menyelesaikan bootcamp intensif selama [durasi] yang mencakup
+              full-stack web development menggunakan teknologi modern.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022</div>
+          <div class="timeline-card">
+            <h3>Peserta Program [Nama Program]</h3>
+            <div class="org">📌 [Nama Organisasi/Perusahaan]</div>
+            <p>
+              Berpartisipasi dalam program pengembangan skill digital yang
+              berfokus pada praktik langsung di industri teknologi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header reveal">
+        <div class="section-tag">// Hubungi Saya</div>
+        <h2 class="section-title">Let's Work Together</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>
+            Siap Berkolaborasi?
+            <span style="color: var(--accent)">Mari Chat!</span>
+          </h3>
+          <p>
+            Saya selalu terbuka untuk project baru, kesempatan magang, Jangan
+            ragu untuk menghubungi saya!
+          </p>
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div class="contact-item-text">
+              <div class="lbl">Email</div>
+              <div class="val">ilhamsimarmata.26@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📱</div>
+            <div class="contact-item-text">
+              <div class="lbl">WhatsApp</div>
+              <div class="val">+62 812 6539 8468</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <div class="lbl">Lokasi</div>
+              <div class="val">Jawa Barat, Indonesia</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama</label>
+              <input type="text" placeholder="ghazali" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="ghazali@gmail.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input
+              type="text"
+              placeholder="Tentang project atau kolaborasi..."
+            />
+          </div>
+          <div class="form-group">
+            <label>Pesan</label>
+            <textarea
+              rows="5"
+              placeholder="Ceritakan project atau kebutuhan kamu di sini..."
+            ></textarea>
+          </div>
+          <button
+            class="btn-primary"
+            style="width: 100%; justify-content: center"
+            onclick="handleSubmit(this)"
+          >
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+            Kirim Pesan
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-logo"><span>Ilham</span>Ghazali</div>
+      <p style="margin-bottom: 1rem">
+        Dibangun dengan 💜 oleh M. Ilham Ghazali Simarmata
+      </p>
+      <p>© 2024 — All rights reserved</p>
+    </footer>
+
+    <script src="js/canvas-bg.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

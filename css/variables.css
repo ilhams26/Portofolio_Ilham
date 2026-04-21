@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #7c5cfc;
+  --accent-glow: rgba(124, 92, 252, 0.6);
+  --accent-soft: rgba(124, 92, 252, 0.15);
+  --bg: #0c0c14;
+  --bg2: #12121e;
+  --bg3: #191928;
+  --card: #16162a;
+  --text: #f0eef8;
+  --text-muted: #8885a0;
+  --border: rgba(124, 92, 252, 0.2);
+  --nav-h: 70px;
+  --radius: 16px;
+  --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+[data-theme="light"] {
+  --bg: #f4f3ff;
+  --bg2: #eceaff;
+  --bg3: #e2dfff;
+  --card: #ffffff;
+  --text: #1a1733;
+  --text-muted: #5a5580;
+  --border: rgba(124, 92, 252, 0.25);
+  --accent-soft: rgba(124, 92, 252, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition:
+    background var(--transition),
+    color var(--transition);
+  cursor: none;
+}
