@@ -1,70 +1,92 @@
-// ===== PARTICLES BACKGROUND =====
-const canvas = document.getElementById("bg-canvas");
-const ctx = canvas.getContext("2d");
-let particles = [],
-  W,
-  H;
+/**
+ * canvas-bg.js
+ * Lightweight animated particle canvas background.
+ * Uses requestAnimationFrame for smooth performance.
+ */
 
-function resize() {
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
+(function () {
+  "use strict";
 
-class Particle {
-  constructor() {
-    this.reset();
-  }
-  reset() {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.r = Math.random() * 1.5 + 0.3;
-    this.vx = (Math.random() - 0.5) * 0.4;
-    this.vy = (Math.random() - 0.5) * 0.4;
-    this.alpha = Math.random() * 0.5 + 0.1;
-    this.color = Math.random() > 0.5 ? "124,92,252" : "192,132,252";
-  }
-  update() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
-    ctx.fill();
-  }
-}
+  const canvas = document.getElementById("bg-canvas");
+  if (!canvas) return;
 
-for (let i = 0; i < 120; i++) particles.push(new Particle());
+  const ctx = canvas.getContext("2d");
+  let W, H, particles = [], animId;
 
-function connectParticles() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 100) {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(124,92,252,${0.08 * (1 - dist / 100)})`;
-        ctx.lineWidth = 0.5;
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.stroke();
+  const CONFIG = {
+    count:      55,
+    maxRadius:  2.2,
+    speed:      0.35,
+    connectDist: 130,
+    color:      "124, 92, 252",
+  };
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function createParticle() {
+    return {
+      x:  Math.random() * W,
+      y:  Math.random() * H,
+      vx: (Math.random() - 0.5) * CONFIG.speed,
+      vy: (Math.random() - 0.5) * CONFIG.speed,
+      r:  Math.random() * CONFIG.maxRadius + 0.5,
+      o:  Math.random() * 0.5 + 0.2,
+    };
+  }
+
+  function init() {
+    particles = [];
+    for (let i = 0; i < CONFIG.count; i++) particles.push(createParticle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    particles.forEach((p) => {
+      // Update position
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${CONFIG.color}, ${p.o})`;
+      ctx.fill();
+    });
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONFIG.connectDist) {
+          const alpha = (1 - dist / CONFIG.connectDist) * 0.18;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(${CONFIG.color}, ${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
       }
     }
-  }
-}
 
-function animateParticles() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach((p) => {
-    p.update();
-    p.draw();
+    animId = requestAnimationFrame(draw);
+  }
+
+  // Init
+  resize();
+  init();
+  draw();
+
+  window.addEventListener("resize", () => {
+    resize();
+    init();
   });
-  connectParticles();
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
+})();

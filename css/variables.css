@@ -7,34 +7,62 @@
 }
 
 :root {
-  --accent: #7c5cfc;
-  --accent-glow: rgba(124, 92, 252, 0.6);
-  --accent-soft: rgba(124, 92, 252, 0.15);
-  --bg: #0c0c14;
-  --bg2: #12121e;
-  --bg3: #191928;
-  --card: #16162a;
-  --text: #f0eef8;
+  /* === COLOR PALETTE === */
+  --accent:        #7c5cfc;
+  --accent-2:      #c084fc;
+  --accent-glow:   rgba(124, 92, 252, 0.6);
+  --accent-soft:   rgba(124, 92, 252, 0.12);
+  --accent-border: rgba(124, 92, 252, 0.25);
+
+  /* === BACKGROUNDS === */
+  --bg:   #090912;
+  --bg2:  #0f0f1c;
+  --bg3:  #16162a;
+  --card: #14142a;
+
+  /* === TEXT === */
+  --text:       #f0eef8;
   --text-muted: #8885a0;
-  --border: rgba(124, 92, 252, 0.2);
-  --nav-h: 70px;
-  --radius: 16px;
-  --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --text-dim:   #5a5775;
+
+  /* === BORDERS & RADIUS === */
+  --border:     rgba(124, 92, 252, 0.18);
+  --radius:     16px;
+  --radius-sm:  10px;
+  --radius-xs:  8px;
+
+  /* === LAYOUT === */
+  --nav-h:    70px;
+  --max-w:    1200px;
+  --section-p: 7rem 5%;
+
+  /* === TRANSITIONS === */
+  --transition:      0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: 0.2s ease;
+  --transition-med:  0.3s ease;
+
+  /* === GRADIENTS === */
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  --gradient-glow:   linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent));
 }
 
+/* === LIGHT THEME === */
 [data-theme="light"] {
-  --bg: #f4f3ff;
-  --bg2: #eceaff;
-  --bg3: #e2dfff;
-  --card: #ffffff;
-  --text: #1a1733;
+  --bg:         #f4f3ff;
+  --bg2:        #eceaff;
+  --bg3:        #e2dfff;
+  --card:       #ffffff;
+  --text:       #1a1733;
   --text-muted: #5a5580;
-  --border: rgba(124, 92, 252, 0.25);
-  --accent-soft: rgba(124, 92, 252, 0.1);
+  --text-dim:   #9390b0;
+  --border:     rgba(124, 92, 252, 0.22);
+  --accent-soft: rgba(124, 92, 252, 0.08);
 }
 
+/* === BASE STYLES === */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
 }
 
 body {
@@ -42,8 +70,21 @@ body {
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
-  transition:
-    background var(--transition),
-    color var(--transition);
+  transition: background var(--transition), color var(--transition);
   cursor: none;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: "DM Sans", sans-serif;
 }
