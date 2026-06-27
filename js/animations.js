@@ -1,21 +1,12 @@
-/**
- * animations.js
- * - Scroll reveal
- * - Typewriter effect
- * - Counter animation (IntersectionObserver)
- * - 3D tilt effect for cards
- */
-
 (function () {
   "use strict";
 
-  /* ===== SCROLL REVEAL ===== */
+  /* Scroll Reveal */
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          // Unobserve after reveal for performance
           revealObserver.unobserve(entry.target);
         }
       });
@@ -27,7 +18,7 @@
     revealObserver.observe(el);
   });
 
-  /* ===== TYPEWRITER ===== */
+  /* Typewriter */
   const texts = [
     "Junior Developer",
     "Web Enthusiast",
@@ -63,7 +54,7 @@
     typeWriter();
   }
 
-  /* ===== COUNTER ANIMATION (IntersectionObserver) ===== */
+  /* Counter Animation */
   const counterObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -94,7 +85,7 @@
     counterObserver.observe(el);
   });
 
-  /* ===== 3D TILT EFFECT ===== */
+  /* 3D Tilt Effect */
   document.querySelectorAll(".tilt-card").forEach((card) => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();

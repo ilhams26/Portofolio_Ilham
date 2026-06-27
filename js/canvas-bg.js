@@ -1,9 +1,3 @@
-/**
- * canvas-bg.js
- * Lightweight animated particle canvas background.
- * Uses requestAnimationFrame for smooth performance.
- */
-
 (function () {
   "use strict";
 

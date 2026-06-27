@@ -1,10 +1,3 @@
-/**
- * 3d-avatar.js
- * Three.js wireframe icosahedron + particle field around the hero avatar.
- * Runs only if Three.js and the container are available.
- * Pauses rendering when not visible (IntersectionObserver) for performance.
- */
-
 (function () {
   "use strict";
 
@@ -13,7 +6,7 @@
   const container = document.getElementById("canvas-container-3d");
   if (!container) return;
 
-  /* ─── Scene Setup ─── */
+  /* Scene Setup */
   const scene    = new THREE.Scene();
   const camera   = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.1, 100);
   camera.position.z = 4;
@@ -23,7 +16,7 @@
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
 
-  /* ─── Wireframe Icosahedron ─── */
+  /* Wireframe Icosahedron */
   const geoSphere = new THREE.IcosahedronGeometry(1.9, 1);
   const matSphere = new THREE.MeshBasicMaterial({
     color:       0xc084fc,
@@ -34,7 +27,7 @@
   const sphere = new THREE.Mesh(geoSphere, matSphere);
   scene.add(sphere);
 
-  /* ─── Particle Field ─── */
+  /*   Particle Field */
   const COUNT = 600;
   const positions = new Float32Array(COUNT * 3);
   for (let i = 0; i < COUNT; i++) {
@@ -69,14 +62,14 @@
   const particles = new THREE.Points(geoParticles, matParticles);
   scene.add(particles);
 
-  /* ─── Mouse Interactivity ─── */
+  /* Mouse Interactivity */
   let targetX = 0, targetY = 0;
   document.addEventListener("mousemove", (e) => {
     targetX = (e.clientX - window.innerWidth  / 2) * 0.0008;
     targetY = (e.clientY - window.innerHeight / 2) * 0.0008;
   }, { passive: true });
 
-  /* ─── Animation ─── */
+  /* Animation */
   let isVisible = true;
   const clock   = new THREE.Clock();
 
@@ -102,7 +95,7 @@
     renderer.render(scene, camera);
   })();
 
-  /* ─── Resize ─── */
+  /* Resize */
   window.addEventListener("resize", () => {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
