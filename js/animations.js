@@ -85,7 +85,35 @@
     counterObserver.observe(el);
   });
 
-  /* 3D Tilt Effect */
+  /* ===== TIMELINE STAR ANIMATION ===== */
+  const timeline = document.querySelector(".timeline");
+  const star = document.querySelector(".timeline-star");
+  
+  if (timeline && star) {
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      const timelineRect = timeline.getBoundingClientRect();
+      const absoluteTop = timelineRect.top + scrollY;
+      const timelineHeight = timeline.offsetHeight;
+      
+      // Star moves when timeline enters the middle of viewport
+      const viewportMiddle = window.innerHeight / 2;
+      const startPoint = absoluteTop - viewportMiddle;
+      const endPoint = absoluteTop + timelineHeight - viewportMiddle;
+      
+      let progress = 0;
+      if (scrollY >= startPoint && scrollY <= endPoint) {
+        progress = (scrollY - startPoint) / (endPoint - startPoint);
+      } else if (scrollY > endPoint) {
+        progress = 1;
+      }
+      
+      const starTop = progress * timelineHeight;
+      star.style.top = `${starTop}px`;
+    }, { passive: true });
+  }
+
+  /* ===== 3D TILT EFFECT ===== */
   document.querySelectorAll(".tilt-card").forEach((card) => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();

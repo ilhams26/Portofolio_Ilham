@@ -866,6 +866,22 @@
 .cert-modal-close:hover { background: var(--accent); border-color: var(--accent); }
 
 /* ===== TIMELINE ===== */
+.timeline-star {
+  position: absolute;
+  left: -9px; /* adjust left based on the 2px line at left:0 */
+  top: 0;
+  font-size: 1.2rem;
+  z-index: 10;
+  filter: drop-shadow(0 0 8px var(--accent));
+  animation: spinStar 3s linear infinite;
+  /* transform is handled by animation, top is handled by JS */
+}
+@keyframes spinStar {
+  0% { transform: translateY(-50%) rotate(0deg) scale(1); }
+  50% { transform: translateY(-50%) rotate(180deg) scale(1.2); }
+  100% { transform: translateY(-50%) rotate(360deg) scale(1); }
+}
+
 .timeline-dot {
   position: absolute;
   left: -6px;
