@@ -20,11 +20,10 @@
 
   /* Typewriter */
   const texts = [
-    "Junior Developer",
-    "Web Enthusiast",
-    "UI/UX Learner",
-    "Problem Solver",
-    "Creative Coder",
+    "IT Support",
+    "Junior Software Developer",
+    "UI/UX Enthusiast",
+    "Web Development Enthusiast"
   ];
 
   const tEl = document.querySelector(".typewriter-text");
