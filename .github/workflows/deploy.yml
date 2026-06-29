@@ -1,23 +1,77 @@
-name: Deploy Website CI/CD
+# ============================================================
+#  deploy.yml — CI/CD Portfolio HTML/CSS/JS ke InfinityFree
+#  
+#  Cara kerja:
+#  1. Kamu push kode ke branch 'main'
+#  2. GitHub Actions otomatis jalan
+#  3. File di-upload ke InfinityFree via FTP
+#  4. Website langsung update!
+#
+#  Setup sebelum pakai:
+#  GitHub repo → Settings → Secrets and variables → Actions
+#  Tambahkan 3 secret:
+#    - FTP_SERVER   : ftpupload.net
+#    - FTP_USERNAME : epiz_XXXXXXX@namadomain.com
+#    - FTP_PASSWORD : password_ftp_kamu
+# ============================================================
+
+name: 🚀 Deploy Portfolio ke InfinityFree
+
 on:
   push:
     branches:
-      - main
+      - main          # Jalan otomatis kalau push ke branch main
+  workflow_dispatch:  # Bisa juga di-trigger manual dari GitHub
+
 jobs:
   deploy:
+    name: Upload via FTP ke InfinityFree
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
+
+      # ── Step 1: Checkout kode dari GitHub ────────────────────
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
-      - name: Setup SSH
+
+      # ── Step 2: (Opsional) Validasi struktur file ─────────────
+      - name: 🔍 Cek struktur file
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/tes_server_polindra
-          chmod 600 ~/.ssh/tes_server_polindra
-          ssh-keyscan -p 8022 -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-      - name: Deploy to Server
+          echo "====== File yang akan di-deploy ======"
+          ls -la
+          echo "====== Isi folder assets ============="
+          ls -la assets/ 2>/dev/null || echo "Folder assets tidak ditemukan"
+
+      # ── Step 3: Upload ke InfinityFree via FTP ────────────────
+      - name: 📤 Deploy via FTP ke InfinityFree
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          # Credentials dari GitHub Secrets (JANGAN ditulis langsung di sini!)
+          server  : ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+
+          # Folder tujuan di InfinityFree (jangan ubah ini)
+          server-dir: /htdocs/
+
+          # File/folder yang TIDAK perlu di-upload
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
+            **/README.md
+            **/.env
+            **/.env.*
+            **/LICENSE
+            **/.gitignore
+            **/composer.*
+            **/package-lock.json
+
+      # ── Step 4: Notifikasi selesai ────────────────────────────
+      - name: ✅ Deploy selesai!
         run: |
-          rsync -avz --delete \
-            -e "ssh -p 8022 -i ~/.ssh/tes_server_polindra" \
-            ./ \
-            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_PATH }}
+          echo "=================================================="
+          echo " SUKSES! Portfolio berhasil di-deploy ke InfinityFree"
+          echo " Cek website kamu sekarang!"
+          echo "=================================================="
