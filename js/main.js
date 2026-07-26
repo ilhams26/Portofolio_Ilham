@@ -15,14 +15,22 @@
   window.addEventListener("scroll", updateScroll, { passive: true });
 
   //ACTIVE NAV HIGHLIGHT
-  const NAV_SECTIONS = ["home", "about", "services", "projects", "certificates", "experience", "contact"];
+  const NAV_SECTIONS = [
+    "home",
+    "about",
+    "services",
+    "projects",
+    "certificates",
+    "experience",
+    "contact",
+  ];
 
   function updateActiveNav(scrollTop) {
     NAV_SECTIONS.forEach((id) => {
-      const el   = document.getElementById(id);
+      const el = document.getElementById(id);
       const link = document.querySelector(`.nav-links a[href="#${id}"]`);
       if (!el || !link) return;
-      const top    = el.offsetTop - 120;
+      const top = el.offsetTop - 120;
       const bottom = top + el.offsetHeight;
       if (scrollTop >= top && scrollTop < bottom) link.classList.add("active");
       else link.classList.remove("active");
@@ -31,7 +39,7 @@
 
   // THEME TOGGLE
   const themeToggle = document.getElementById("themeToggle");
-  const THEME_KEY   = "portfolio-theme";
+  const THEME_KEY = "portfolio-theme";
 
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
@@ -43,7 +51,8 @@
   applyTheme(savedTheme);
 
   themeToggle?.addEventListener("click", () => {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const isDark =
+      document.documentElement.getAttribute("data-theme") === "dark";
     applyTheme(isDark ? "light" : "dark");
   });
 
@@ -66,7 +75,7 @@
   // SMOOTH SCROLL (anchor links)
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
-      const href   = a.getAttribute("href");
+      const href = a.getAttribute("href");
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
@@ -78,12 +87,12 @@
   // CONTACT FORM SUBMIT
   window.handleSubmit = function (btn) {
     const originalHTML = btn.innerHTML;
-    btn.textContent    = "✅ Terkirim!";
+    btn.textContent = "✅ Terkirim!";
     btn.style.background = "#22c55e";
     btn.disabled = true;
 
     setTimeout(() => {
-      btn.innerHTML    = originalHTML;
+      btn.innerHTML = originalHTML;
       btn.style.background = "";
       btn.disabled = false;
     }, 3000);
@@ -91,9 +100,12 @@
 
   // NAV SCROLL EFFECT
   const nav = document.querySelector("nav");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 30) nav?.classList.add("scrolled");
-    else nav?.classList.remove("scrolled");
-  }, { passive: true });
-
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (window.scrollY > 30) nav?.classList.add("scrolled");
+      else nav?.classList.remove("scrolled");
+    },
+    { passive: true },
+  );
 })();

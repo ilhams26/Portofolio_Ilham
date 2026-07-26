@@ -306,12 +306,12 @@ footer p {
 /* ===================================================
    RESPONSIVE — Mobile (≤ 600px)
    =================================================== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   :root { --section-p: 5rem 5%; }
 
   .services-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
-  .certs-grid { grid-template-columns: 1fr; }
+  .certs-grid { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .nav-links,
