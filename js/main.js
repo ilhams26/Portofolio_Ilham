@@ -61,14 +61,19 @@
   const mobileNav = document.getElementById("mobileNav");
 
   hamburger?.addEventListener("click", () => {
-    hamburger.classList.toggle("open");
-    mobileNav?.classList.toggle("open");
+    const isOpen = hamburger.classList.toggle("open");
+
+    mobileNav?.classList.toggle("open", isOpen);
+    hamburger.setAttribute("aria-expanded", isOpen);
+    mobileNav?.setAttribute("aria-hidden", !isOpen);
   });
 
-  mobileNav?.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
+  mobileNav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
       hamburger?.classList.remove("open");
       mobileNav?.classList.remove("open");
+      hamburger?.setAttribute("aria-expanded", "false");
+      mobileNav?.setAttribute("aria-hidden", "true");
     });
   });
 

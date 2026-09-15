@@ -1,4 +1,5 @@
-nav {
+.navbar,
+body > nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,7 +16,8 @@ nav {
   border-bottom: 1px solid var(--border);
   transition: background var(--transition);
 }
-[data-theme="light"] nav {
+[data-theme="light"] .navbar,
+[data-theme="light"] body > nav {
   background: rgba(244, 243, 255, 0.85);
 }
 .nav-logo {
@@ -77,22 +79,14 @@ nav {
   background: var(--bg2);
   border-bottom: 1px solid var(--border);
   padding: 1.5rem 5%;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 1.2rem;
   z-index: 999;
-  transform: translateY(-110%);
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition);
-  pointer-events: none;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 .mobile-nav.open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
+   display: flex;
 }
 .mobile-nav a {
   text-decoration: none;
@@ -303,6 +297,10 @@ footer p {
   .projects-grid { grid-template-columns: 1fr 1fr; }
   .certs-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+  .nav-links,
+  .btn-contact { display: none; }
+  .hamburger { display: flex; }
 }
 
 /* ===================================================
