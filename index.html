@@ -1,284 +1,169 @@
 <!doctype html>
 <html lang="id" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Portofolio M. Ilham Ghazali Simarmata — Junior Web Developer dari Jawa Barat, Indonesia. Spesialisasi web development, UI/UX design, dan solusi digital kreatif."
-    />
-    <meta
-      name="keywords"
-      content="web developer, junior developer, portofolio, Ilham Ghazali, Politeknik Negeri Indramayu, HTML CSS JavaScript"
-    />
-    <meta name="author" content="M. Ilham Ghazali Simarmata" />
-    <meta
-      property="og:title"
-      content="M. Ilham Ghazali Simarmata — Junior Developer"
-    />
-    <meta
-      property="og:description"
-      content="Portofolio web developer muda. Seorang mahasiswa RPL dari Politeknik Negeri Indramayu"
-    />
-    <meta property="og:type" content="website" />
 
-    <title>M. Ilham Ghazali Simarmata - Portofolio</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Portofolio M. Ilham Ghazali Simarmata — Junior Web Developer dari Jawa Barat, Indonesia. Spesialisasi web development, UI/UX design, dan solusi digital kreatif." />
+  <meta name="keywords"
+    content="web developer, junior developer, portofolio, Ilham Ghazali, Politeknik Negeri Indramayu, HTML CSS JavaScript" />
+  <meta name="author" content="M. Ilham Ghazali Simarmata" />
+  <meta property="og:title" content="M. Ilham Ghazali Simarmata — Junior Developer" />
+  <meta property="og:description"
+    content="Portofolio web developer muda. Seorang mahasiswa RPL dari Politeknik Negeri Indramayu" />
+  <meta property="og:type" content="website" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>M. Ilham Ghazali Simarmata - Portofolio</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <body>
-    <div id="cursor" aria-hidden="true"></div>
-    <div id="cursor-ring" aria-hidden="true"></div>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
-    <div id="scroll-line" aria-hidden="true"></div>
+<body>
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
 
-    <!-- CANVAS BACKGROUND -->
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div id="scroll-line" aria-hidden="true"></div>
 
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-      <a href="#home" class="nav-logo" aria-label="Home"
-        ><span>Ilham</span>Ghazali</a
-      >
+  <!--CANVAS -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-      <ul class="nav-links" role="list">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Project</a></li>
-        <li><a href="#certificates">Sertifikat</a></li>
-        <li><a href="#experience">Experience</a></li>
-      </ul>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="#home" class="nav-logo" aria-label="Home"><span>Ilham</span>Ghazali</a>
 
-      <div class="nav-right">
-        <div
-          class="theme-toggle"
-          id="themeToggle"
-          role="button"
-          aria-label="Toggle dark/light mode"
-          tabindex="0"
-        >
-          <span class="theme-toggle-icon moon" aria-hidden="true">🌙</span>
-          <span class="theme-toggle-icon sun" aria-hidden="true">☀️</span>
-        </div>
-        <button
-          class="btn-contact"
-          id="navContactBtn"
-          onclick="
+    <ul class="nav-links" role="list">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Project</a></li>
+      <li><a href="#certificates">Sertifikat</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle dark/light mode" tabindex="0">
+        <span class="theme-toggle-icon moon" aria-hidden="true">🌙</span>
+        <span class="theme-toggle-icon sun" aria-hidden="true">☀️</span>
+      </div>
+      <button class="btn-contact" id="navContactBtn" onclick="
             document
               .getElementById('contact')
               .scrollIntoView({ behavior: 'smooth' })
-          "
-        >
-          Contact Me
-        </button>
-        <div
-          class="hamburger"
-          id="hamburger"
-          role="button"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          tabindex="0"
-        >
-          <span></span><span></span><span></span>
+          ">
+        Contact Me
+      </button>
+      <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Project</a>
+    <a href="#certificates">Sertifikat</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" aria-label="Hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="tag">
+          <span class="tag-dot" aria-hidden="true"></span>
+          Open to Work — IT Support & Junior Software Developer
+        </div>
+
+        <h1>
+          Hello, I'm<br />
+          <span class="name">M. Ilham Ghazali</span>
+          <span class="line2">Simarmata</span>
+        </h1>
+
+        <div class="typewriter-wrap" aria-live="polite">
+          Saya seorang — <span class="typewriter-text"></span><span class="cursor-blink" aria-hidden="true"></span>
+        </div>
+
+        <p>
+          Mahasiswa D4 Rekayasa Perangkat Lunak yang memiliki pengalaman praktik di bidang jaringan dan pengembangan
+          web.
+          Memiliki minat pada IT support, administrasi digital, serta pengembangan aplikasi berbasis web dan mobile.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary" id="heroViewProject">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+            </svg>
+            Lihat Project
+          </a>
+          <a href="assets/CV_IT_Ilham_Ghazali.pdf" class="btn-secondary" id="heroDownloadCV" download
+            aria-label="Download CV" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            Download CV
+          </a>
+        </div>
+
+        <div class="hero-socials" aria-label="Social media links">
+          <a href="https://github.com/ilhams26" target="_blank" rel="noopener" class="social-link" id="socialGithub"
+            title="GitHub" aria-label="GitHub">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.12.82-.26.82-.58l-.01-2.24c-3.34.73-4.04-1.45-4.04-1.45-.54-1.38-1.32-1.74-1.32-1.74-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22l-.01 3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/ilhamghazali" target="_blank" rel="noopener" class="social-link"
+            id="socialLinkedin" title="LinkedIn" aria-label="LinkedIn">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/hams_gz" target="_blank" rel="noopener" class="social-link"
+            id="socialInstagram" title="Instagram" aria-label="Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="#contactName" class="social-link" id="socialEmail" title="Email" aria-label="Send Email">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="stats-row" aria-label="Stats">
+          <div class="stat">
+            <div class="num" data-count="5">0</div>
+            <div class="lbl">Projects</div>
+          </div>
+          <div class="stat">
+            <div class="num" data-count="2">0</div>
+            <div class="lbl">Tahun Belajar</div>
+          </div>
+          <div class="stat">
+            <div class="num" data-count="8">0</div>
+            <div class="lbl">Sertifikat</div>
+          </div>
         </div>
       </div>
-    </nav>
 
-    <!-- MOBILE NAV -->
-    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#projects">Project</a>
-      <a href="#certificates">Sertifikat</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <!-- HERO -->
-    <section id="home" aria-label="Hero">
-      <div class="hero-inner">
-        <!-- Text Left -->
-        <div class="hero-text">
-          <div class="tag">
-            <span class="tag-dot" aria-hidden="true"></span>
-            Open to Work — IT Support & Junior Software Developer
-          </div>
-
-          <h1>
-            Hello, I'm<br />
-            <span class="name">M. Ilham Ghazali</span>
-            <span class="line2">Simarmata</span>
-          </h1>
-
-          <div class="typewriter-wrap" aria-live="polite">
-            Saya seorang — <span class="typewriter-text"></span
-            ><span class="cursor-blink" aria-hidden="true"></span>
-          </div>
-
-          <p>
-            Mahasiswa D4 Rekayasa Perangkat Lunak yang memiliki pengalaman praktik di bidang jaringan dan pengembangan web.
-           Memiliki minat pada IT support, administrasi digital, serta pengembangan aplikasi berbasis web dan mobile.
-          </p>
-
-          <div class="hero-btns">
-            <a href="#projects" class="btn-primary" id="heroViewProject">
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
-                />
-              </svg>
-              Lihat Project
-            </a>
-            <a
-              href="assets/M_Ilham_Ghazali_CV.pdf"
-              class="btn-secondary"
-              id="heroDownloadCV"
-              download
-              aria-label="Download CV"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"
-                />
-              </svg>
-              Download CV
-            </a>
-          </div>
-
-          <div class="hero-socials" aria-label="Social media links">
-            <a
-              href="https://github.com/ilhams26"
-              target="_blank"
-              rel="noopener"
-              class="social-link"
-              id="socialGithub"
-              title="GitHub"
-              aria-label="GitHub"
-            >
-              <svg
-                width="18"
-                height="18"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.12.82-.26.82-.58l-.01-2.24c-3.34.73-4.04-1.45-4.04-1.45-.54-1.38-1.32-1.74-1.32-1.74-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22l-.01 3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ilhamghazali"
-              target="_blank"
-              rel="noopener"
-              class="social-link"
-              id="socialLinkedin"
-              title="LinkedIn"
-              aria-label="LinkedIn"
-            >
-              <svg
-                width="18"
-                height="18"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://www.instagram.com/hams_gz"
-              target="_blank"
-              rel="noopener"
-              class="social-link"
-              id="socialInstagram"
-              title="Instagram"
-              aria-label="Instagram"
-            >
-              <svg
-                width="18"
-                height="18"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                />
-              </svg>
-            </a>
-            <a
-              href="#contactName"
-              class="social-link"
-              id="socialEmail"
-              title="Email"
-              aria-label="Send Email"
-            >
-              <svg
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-            </a>
-          </div>
-
-          <div class="stats-row" aria-label="Stats">
-            <div class="stat">
-              <div class="num" data-count="6">0</div>
-              <div class="lbl">Projects</div>
-            </div>
-            <div class="stat">
-              <div class="num" data-count="2">0</div>
-              <div class="lbl">Tahun Belajar</div>
-            </div>
-            <div class="stat">
-              <div class="num" data-count="8">0</div>
-              <div class="lbl">Sertifikat</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Visual Right -->
-        <div class="hero-visual">
-          <div class="hero-avatar-wrap">
-            <!-- Three.js container -->
-            <div
-              id="canvas-container-3d"
-              style="
+      <div class="hero-visual">
+        <div class="hero-avatar-wrap">
+          <div id="canvas-container-3d" style="
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -287,1100 +172,747 @@
                 height: 200%;
                 z-index: -1;
                 pointer-events: none;
-              "
-              aria-hidden="true"
-            ></div>
-            <!-- Decorative rings -->
-            <div class="avatar-ring r2" aria-hidden="true"></div>
-            <div class="avatar-ring r1" aria-hidden="true"></div>
-            <!-- Avatar blob -->
-            <div class="avatar-blob" aria-hidden="true">
-              <div class="avatar-placeholder">
-                <img
-                  src="assets/images/profil_ilham.jpeg"
-                  alt=""
-                  class="profile-img"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span>Ilham Ghazali</span>
-              </div>
-            </div>
-            <div class="float-badge b1" aria-hidden="true">
-              <span class="badge-dot"></span> Available for hire
-            </div>
-            <div class="float-badge b2" aria-hidden="true">
-              <span class="badge-icon">💻</span> Junior Developer
-            </div>
-            <div class="float-badge b3" aria-hidden="true">
-              <span class="badge-icon">🎓</span> Mahasiswa
-            </div>
-            <div class="float-badge b4" aria-hidden="true">
-              <span class="badge-icon">📡🖥️</span> IT Support
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" aria-label="About">
-      <div class="section-header reveal">
-        <div class="section-tag">// Tentang Saya</div>
-        <h2 class="section-title">Kenalan Dulu Yuk!</h2>
-        <div class="section-line" aria-hidden="true"></div>
-      </div>
-
-      <div class="about-inner">
-        <div class="about-image-wrap reveal">
-          <div class="about-img-frame">
-            <div class="about-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
+              " aria-hidden="true"></div>
+          <div class="avatar-ring r2" aria-hidden="true"></div>
+          <div class="avatar-ring r1" aria-hidden="true"></div>
+          <div class="avatar-blob" aria-hidden="true">
+            <div class="avatar-placeholder">
+              <img src="assets/images/profil_ilham.jpeg" alt="" class="profile-img" loading="lazy" decoding="async" />
               <span>Ilham Ghazali</span>
             </div>
           </div>
-          <div class="about-deco" aria-hidden="true"></div>
-          <div class="exp-badge" aria-label="2+ tahun belajar">
-            <div class="num">2+</div>
-            <div class="lbl">Tahun</div>
+          <div class="float-badge b1" aria-hidden="true">
+            <span class="badge-dot"></span> Available for hire
+          </div>
+          <div class="float-badge b2" aria-hidden="true">
+            <span class="badge-icon">💻</span> Junior Developer
+          </div>
+          <div class="float-badge b3" aria-hidden="true">
+            <span class="badge-icon">🎓</span> Mahasiswa
+          </div>
+          <div class="float-badge b4" aria-hidden="true">
+            <span class="badge-icon">📡🖥️</span> IT Support
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="about-content reveal reveal-delay-2">
-          <h3>
-            M. Ilham Ghazali <span style="color: var(--accent)">Simarmata</span>
-          </h3>
-          <p>
-            Halo! Saya mahasiswa aktif di
-            <strong>Politeknik Negeri Indramayu</strong> dengan pengalaman 
-            praktik di bidang jaringan, troubleshooting, dan pengembangan web. 
-            Memiliki kemampuan adaptasi yang baik serta terbiasa bekerja mandiri
-            maupun dalam tim pada project berbasis teknologi.
-          </p>
+  <!-- ABOUT -->
+  <section id="about" aria-label="About">
+    <div class="section-header reveal">
+      <div class="section-tag">// Tentang Saya</div>
+      <h2 class="section-title">Kenalan Dulu Yuk!</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
 
-          <div class="skills-grid" aria-label="Tech skills">
-            <div class="skill-chip">HTML/CSS</div>
-            <div class="skill-chip">JavaScript</div>
-            <div class="skill-chip">PHP</div>
-            <div class="skill-chip">MySQL</div>
-            <div class="skill-chip">Team Work</div>
-            <div class="skill-chip">Laravel</div>
-            <div class="skill-chip">Git/GitHub</div>
-            <div class="skill-chip">Figma</div>
-            <div class="skill-chip">Networking</div>
-            <div class="skill-chip">Troubleshooting</div>
-            <div class="skill-chip">Fiber Optic</div>
-            <div class="skill-chip">Flutter Basic</div>
-
+    <div class="about-inner">
+      <div class="about-image-wrap reveal">
+        <div class="about-img-frame">
+          <div class="about-img-placeholder">
+            <img src="assets/images/ilham_9-12.jpeg" alt="" class="profile-img" loading="lazy" decoding="async" />
           </div>
+        </div>
+        <div class="about-deco" aria-hidden="true"></div>
+        <div class="exp-badge" aria-label="2+ tahun belajar">
+          <div class="num">2+</div>
+          <div class="lbl">Tahun</div>
+        </div>
+      </div>
 
-          <div
-            style="
+      <div class="about-content reveal reveal-delay-2">
+        <h3>
+          M. Ilham Ghazali <span style="color: var(--accent)">Simarmata</span>
+        </h3>
+        <p>
+          Halo! Saya mahasiswa aktif di
+          <strong>Politeknik Negeri Indramayu</strong> dengan pengalaman
+          praktik di bidang jaringan, troubleshooting, dan pengembangan web.
+          Memiliki kemampuan adaptasi yang baik serta terbiasa bekerja mandiri
+          maupun dalam tim pada project berbasis teknologi.
+        </p>
+
+        <div class="skills-grid" aria-label="Tech skills">
+          <div class="skill-chip">HTML/CSS</div>
+          <div class="skill-chip">JavaScript</div>
+          <div class="skill-chip">PHP</div>
+          <div class="skill-chip">MySQL</div>
+          <div class="skill-chip">Team Work</div>
+          <div class="skill-chip">Laravel</div>
+          <div class="skill-chip">Git/GitHub</div>
+          <div class="skill-chip">Figma</div>
+          <div class="skill-chip">Networking</div>
+          <div class="skill-chip">Troubleshooting</div>
+          <div class="skill-chip">Fiber Optic</div>
+          <div class="skill-chip">Flutter Basic</div>
+
+        </div>
+
+        <div style="
               display: flex;
               gap: 1rem;
               flex-wrap: wrap;
               margin-top: 0.5rem;
-            "
-          >
-            <a
-              href="assets/M_Ilham_Ghazali_CV.pdf"
-              class="btn-primary"
-              id="aboutDownloadCV"
-              download
-              aria-label="Download CV"
-            >
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"
-                />
-              </svg>
-              Download CV
-            </a>
-            <a href="#contact" class="btn-secondary" id="aboutEmailMe"
-              >✉️ Email Me</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3 — SERVICES -->
-    <section id="services" aria-label="Services">
-      <div class="section-header reveal">
-        <div class="section-tag">// Apa Yang Saya Tawarkan</div>
-        <h2 class="section-title">Professional Services</h2>
-        <div class="section-line" aria-hidden="true"></div>
-      </div>
-
-      <div class="services-grid">
-        <article class="service-card tilt-card reveal reveal-delay-1">
-          <div class="service-icon" aria-hidden="true">🖥️</div>
-          <h3>IT Support</h3>
-          <p>
-            Membantu troubleshooting perangkat dan jaringan, instalasi dasar jaringan 
-            internet, serta penanganan kendala teknis secara langsung dengan pendekatan 
-            yang komunikatif dan solutif.
-          </p>
-        </article>
-        <article class="service-card tilt-card reveal reveal-delay-2">
-          <div class="service-icon" aria-hidden="true">🎨</div>
-          <h3>UI/UX Design</h3>
-          <p>
-            Mendesain antarmuka yang intuitif, menarik, dan berfokus pada
-            pengalaman pengguna yang optimal menggunakan Figma dan dan Canva dengan pendekatan modern.
-          </p>
-        </article>
-        <article class="service-card tilt-card reveal reveal-delay-3">
-          <div class="service-icon" aria-hidden="true">🌐</div>
-          <h3>Web Development</h3>
-          <p>
-            Mengembangkan website berbasis PHP dan Laravel dengan fokus
-            pada pengelolaan data, autentikasi pengguna, serta tampilan 
-            yang responsif dan mudah digunakan.
-          </p>
-        </article>
-        <article class="service-card tilt-card reveal reveal-delay-1">
-          <div class="service-icon" aria-hidden="true">📡</div>
-          <h3>NETWORKING & Fiber Optic</h3>
-          <p>
-            Memiliki pengalaman dasar dalam instalasi jaringan, troubleshooting WiFi,
-            pengelolaan kabel fiber optik, serta proses maintenance perangkat jaringan 
-            lapangan.
-          </p>
-        </article>
-        <article class="service-card tilt-card reveal reveal-delay-2">
-          <div class="service-icon" aria-hidden="true">📊</div>
-          <h3>Digital & Administrative Tools</h3>
-          <p>
-            Terbiasa menggunakan Microsoft Office dan berbagai tools digital 
-            untuk membantu pengolahan data, presentasi, dokumentasi, dan 
-            kebutuhan administrasi kerja.
-          </p>
-        </article>
-        <article class="service-card tilt-card reveal reveal-delay-3">
-          <div class="service-icon" aria-hidden="true">📱</div>
-          <h3>Mobile Development</h3>
-          <p>
-            Mengembangkan aplikasi mobile sederhana menggunakan Flutter yang 
-            terintegrasi dengan backend dan database untuk mendukung 
-            kebutuhan sistem digital modern.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!--  PROJECTS -->
-    <section id="projects" aria-label="Projects">
-      <div class="section-header reveal">
-        <div class="section-tag">// Karya Saya</div>
-        <h2 class="section-title">Project Unggulan</h2>
-        <div class="section-line" aria-hidden="true"></div>
-      </div>
-
-      <div class="projects-grid">
-
-        <!-- Project 1 -->
-        <article class="project-card reveal reveal-delay-1">
-          <div class="project-img" aria-hidden="true">
-            <div class="project-img-placeholder">
-              <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-              <span>Project Screenshot</span>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="overlay-btn" id="proj1Preview" aria-label="Preview project 1">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </a>
-              <a href="#" class="overlay-btn" id="proj1Link" target="_blank" rel="noopener" aria-label="Open project 1 link">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Live
-              </a>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="project-tag">PHP Native</span>
-              <span class="project-tag">MySQL</span>
-            </div>
-            <h3>Healventory &mdash; Sistem Monitoring Inventory</h3>
-            <p>Aplikasi web berbasis PHP Native untuk monitoring dan manajemen stok barang secara real-time dengan dashboard administrasi.</p>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card reveal reveal-delay-2">
-          <div class="project-img" aria-hidden="true">
-            <div class="project-img-placeholder">
-              <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-              <span>Project Screenshot</span>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="overlay-btn" id="proj2Preview" aria-label="Preview project 2">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </a>
-              <a href="#" class="overlay-btn" id="proj2Link" target="_blank" rel="noopener" aria-label="Open project 2 link">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Live
-              </a>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="project-tag">Laravel</span>
-              <span class="project-tag">Flutter</span>
-              <span class="project-tag">VPS</span>
-            </div>
-            <h3>Stok &amp; Penjualan Obat Apotek</h3>
-            <p>Sistem web + mobile dengan Payment Gateway Midtrans, deployment CI/CD di VPS, dan keamanan OWASP Top 10. Semester 4, 2026.</p>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card reveal reveal-delay-3">
-          <div class="project-img" aria-hidden="true">
-            <div class="project-img-placeholder">
-              <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-              <span>Project Screenshot</span>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="overlay-btn" id="proj3Preview" aria-label="Preview project 3">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </a>
-              <a href="https://kelompok9.my.id/" class="overlay-btn" id="proj3Link" target="_blank" rel="noopener" aria-label="Open project 3 link">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Live
-              </a>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="project-tag">Laravel</span>
-              <span class="project-tag">Bootstrap</span>
-            </div>
-            <h3>Company Profile Website</h3>
-            <p>Website company profile responsif dengan sistem manajemen konten sederhana, dibangun menggunakan Laravel dan Bootstrap.</p>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card reveal reveal-delay-1">
-          <div class="project-img" aria-hidden="true">
-            <div class="project-img-placeholder">
-              <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-              <span>Project Screenshot</span>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="overlay-btn" id="proj4Preview" aria-label="Preview project 4">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </a>
-              <a href="#" class="overlay-btn" id="proj4Link" target="_blank" rel="noopener" aria-label="Open project 4 link">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Live
-              </a>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="project-tag">HTML/CSS</span>
-              <span class="project-tag">JavaScript</span>
-              <span class="project-tag">Three.js</span>
-            </div>
-            <h3>Personal Portfolio Website</h3>
-            <p>Website portofolio personal dengan desain modern, animasi 3D interaktif, lightbox sertifikat, dan tema dark/light toggle.</p>
-          </div>
-        </article>
-
-        <!-- Project 5 -->
-        <article class="project-card reveal reveal-delay-2">
-          <div class="project-img" aria-hidden="true">
-            <div class="project-img-placeholder">
-              <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-              <span>Project Screenshot</span>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="overlay-btn" id="proj5Preview" aria-label="Preview project 5">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </a>
-              <a href="#" class="overlay-btn" id="proj5Link" target="_blank" rel="noopener" aria-label="Open project 5 link">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Live
-              </a>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="project-tag">Figma</span>
-              <span class="project-tag">UI/UX</span>
-            </div>
-            <h3>UI/UX Design &mdash; PNBITC Competition</h3>
-            <p>Meraih Top 4 dalam kompetisi UI/UX Design tingkat nasional yang diselenggarakan oleh Politeknik Negeri Bali (PNBITC).</p>
-          </div>
-        </article>
-
-        <!-- Project 6 -->
-        <article class="project-card reveal reveal-delay-3">
-          <div class="project-img" aria-hidden="true">
-            <div class="project-img-placeholder">
-              <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-              <span>Project Screenshot</span>
-            </div>
-            <div class="project-overlay">
-              <a href="#" class="overlay-btn" id="proj6Preview" aria-label="Preview project 6">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </a>
-              <a href="#" class="overlay-btn" id="proj6Link" target="_blank" rel="noopener" aria-label="Open project 6 link">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-                Live
-              </a>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags">
-              <span class="project-tag">Networking</span>
-              <span class="project-tag">Fiber Optic</span>
-            </div>
-            <h3>IT Support &mdash; PKL PT Handayani Fiber Media</h3>
-            <p>Technician &amp; Customer Support 3 bulan: troubleshooting jaringan, inspeksi ODP, instalasi fiber optic, dan penanganan keluhan pelanggan.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CERTIFICATES -->
-    <section id="certificates" aria-label="Certificates and Awards">
-      <div class="section-header reveal">
-        <div class="section-tag">// Pencapaian Saya</div>
-        <h2 class="section-title">Sertifikat &amp; Penghargaan</h2>
-        <div class="section-line" aria-hidden="true"></div>
-      </div>
-
-      <div class="certs-grid">
-        <!-- Cert 1 -->
-        <!-- <article
-          class="cert-card reveal reveal-delay-1"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: UI/UX Design Competition"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/PNBITC_IlhamGhazali.png" alt="Sertifikat UI/UX Design">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview sertifikat">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Kompetisi</div>
-            <h4>Top 4 UI/UX Design Competition</h4>
-            <div class="cert-issuer">Politeknik Negeri Bali - 2025</div>
-          </div>
-        </article> -->
-
-        <article
-          class="cert-card reveal reveal-delay-1"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: Praktik Kerja Lapangan (PKL) PT Handayani Fiber Media"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/Serti_prakerin_depan.jpg" alt="Sertifikat PKL">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview sertifikat">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Prakerin</div>
-            <h4>Praktik Kerja Lapangan (PKL)</h4>
-            <div class="cert-issuer">PT Handayani Fiber Media - 2023</div>
-          </div>
-        </article>
-        
-        <!-- Cert 2 -->
-        <article
-          class="cert-card reveal reveal-delay-2"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: System Administration I"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/Sertifikat_RedHad.jpg" alt="Sertifikat ">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview sertifikat">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Course</div>
-            <h4>System Administration I</h4>
-            <div class="cert-issuer">Red Hat - 2025</div>
-          </div>
-        </article>
-
-        <!-- Cert 3 -->
-        <article
-          class="cert-card reveal reveal-delay-3"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: Server Visit"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/serti_omadata.jpg" alt="Server visit PT Omadata">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview sertifikat">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Seminar</div>
-            <h4>Data Center & Server Visit</h4>
-            <div class="cert-issuer">PT Omadata Surabaya - 2023</div>
-          </div>
-        </article>
-
-        <!-- Cert 4 -->
-        <!-- <article
-          class="cert-card reveal reveal-delay-4"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: Web Design Competition"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/TechSprint_Ilham_Ghazali.jpg" alt="Sertifikat UI/UX TechSprint">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview piagam">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Kompetisi</div>
-            <h4>Peserta UI/UX Design</h4>
-            <div class="cert-issuer">Codelab Indonesia - 2026</div>
-          </div>
-        </article> -->
-        <article
-          class="cert-card reveal reveal-delay-1"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: UI/UX Design Competition"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/PNBITC_IlhamGhazali.png" alt="Sertifikat UI/UX Design">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview sertifikat">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Kompetisi</div>
-            <h4>Top 4 UI/UX Design Competition</h4>
-            <div class="cert-issuer">Politeknik Negeri Bali - 2025</div>
-          </div>
-        </article>
-
-        <!-- Cert 5 -->
-        <article
-          class="cert-card reveal reveal-delay-1"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: HTML CSS Dasar"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/Code_Politan.jpg" alt="Sertifikat Generatif AI">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview sertifikat">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Course</div>
-            <h4>Generative AI</h4>
-            <div class="cert-issuer">CodePolitan - 2026</div>
-          </div>
-        </article>
-
-        <!-- Cert 6 -->
-        <article
-          class="cert-card reveal reveal-delay-2"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: Webinar Teknologi Digital"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/Techomfest_UI_UX_Ilham Ghazali.jpg" alt="Sertifikat UI/UX Techomfest">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview sertifikat">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Kompetisi</div>
-            <h4>Peserta UI/UX Design Competition</h4>
-            <div class="cert-issuer">Politeknik Negeri Semarang - 2026</div>
-          </div>
-        </article>
-
-        <!-- Cert 7 -->
-        <article
-          class="cert-card reveal reveal-delay-3"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: Git & GitHub"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/Serti_UKK.jpg" alt="Sertifikat PKL Handayani FM">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview sertifikat">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Sertifikasi Profesi</div>
-            <h4>Sertifikat Administator Jaringan Muda</h4>
-            <div class="cert-issuer">Lembaga Sertifikasi Profesi(LSP) Telematika - 2023</div>
-          </div>
-        </article>
-
-        <!-- Cert 8 -->
-        <article
-          class="cert-card reveal reveal-delay-4"
-          role="button"
-          tabindex="0"
-          aria-label="Lihat sertifikat: Piagam Prestasi"
-        >
-          <div class="cert-img-wrap">
-            <div class="cert-img-placeholder">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-              <img src="assets/images/sertifikat/SeminarIT_Cast.jpg" alt="Piagam Penghargaan Keikutsertaan Seminar IT">
-            </div>
-            <div class="cert-overlay">
-              <button class="cert-preview-btn" aria-label="Preview piagam">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Preview
-              </button>
-            </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Seminar</div>
-            <h4>Piagam Penghargaan Keikutsertaan Seminar</h4>
-            <div class="cert-issuer">Politeknik Negeri Indramayu - 2024</div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CERTIFICATE LIGHTBOX MODAL -->
-    <div
-      id="cert-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Preview sertifikat"
-    >
-      <div class="cert-modal-backdrop"></div>
-      <div class="cert-modal-box">
-        <button
-          class="cert-modal-close"
-          id="certModalClose"
-          aria-label="Tutup preview"
-        >
-          ✕
-        </button>
-        <img
-          class="cert-modal-img"
-          src=""
-          alt="Preview sertifikat"
-          loading="lazy"
-        />
-        <div class="cert-modal-footer">
-          <h3></h3>
-          <p></p>
+            ">
+          <a href="assets/M_Ilham_Ghazali_CV.pdf" class="btn-primary" id="aboutDownloadCV" download
+            aria-label="Download CV">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            Download CV
+          </a>
+          <a href="#contact" class="btn-secondary" id="aboutEmailMe">✉️ Email Me</a>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- SECTION 6 — EXPERIENCE -->
-    <section id="experience" aria-label="Experience and Education">
-      <div class="section-header reveal">
-        <div class="section-tag">// Perjalanan Saya</div>
-        <h2 class="section-title">Experience &amp; Education</h2>
-        <div class="section-line" aria-hidden="true"></div>
-      </div>
+  <section id="services" aria-label="Services">
+    <div class="section-header reveal">
+      <div class="section-tag">// Apa Yang Saya Tawarkan</div>
+      <h2 class="section-title">Professional Services</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
 
-      <div class="timeline" role="list">
-        <div class="timeline-item reveal" role="listitem">
-          <div class="timeline-dot" aria-hidden="true"></div>
-          <div class="timeline-date">2023 — Sekarang</div>
-          <div class="timeline-card">
-            <h3>Junior Web Developer </h3>
-            <div class="org">🔧 Self-Employed</div>
-            <p>
-              Mengerjakan berbagai project web perkuliahan, mulai dari landing
-              page, company profile, hingga web app sederhana. Fokus pada clean
-              code dan user experience.
-            </p>
+    <div class="services-grid">
+      <article class="service-card tilt-card reveal reveal-delay-1">
+        <div class="service-icon" aria-hidden="true">🖥️</div>
+        <h3>IT Support</h3>
+        <p>
+          Membantu troubleshooting perangkat dan jaringan, instalasi dasar jaringan
+          internet, serta penanganan kendala teknis secara langsung dengan pendekatan
+          yang komunikatif dan solutif.
+        </p>
+      </article>
+      <article class="service-card tilt-card reveal reveal-delay-2">
+        <div class="service-icon" aria-hidden="true">🎨</div>
+        <h3>UI/UX Design</h3>
+        <p>
+          Mendesain antarmuka yang intuitif, menarik, dan berfokus pada
+          pengalaman pengguna yang optimal menggunakan Figma dan dan Canva dengan pendekatan modern.
+        </p>
+      </article>
+      <article class="service-card tilt-card reveal reveal-delay-3">
+        <div class="service-icon" aria-hidden="true">🌐</div>
+        <h3>Web Development</h3>
+        <p>
+          Mengembangkan website berbasis PHP dan Laravel dengan fokus
+          pada pengelolaan data, autentikasi pengguna, serta tampilan
+          yang responsif dan mudah digunakan.
+        </p>
+      </article>
+      <article class="service-card tilt-card reveal reveal-delay-1">
+        <div class="service-icon" aria-hidden="true">📡</div>
+        <h3>NETWORKING & Fiber Optic</h3>
+        <p>
+          Memiliki pengalaman dasar dalam instalasi jaringan, troubleshooting WiFi,
+          pengelolaan kabel fiber optik, serta proses maintenance perangkat jaringan
+          lapangan.
+        </p>
+      </article>
+      <article class="service-card tilt-card reveal reveal-delay-2">
+        <div class="service-icon" aria-hidden="true">📊</div>
+        <h3>Digital & Administrative Tools</h3>
+        <p>
+          Terbiasa menggunakan Microsoft Office dan berbagai tools digital
+          untuk membantu pengolahan data, presentasi, dokumentasi, dan
+          kebutuhan administrasi kerja.
+        </p>
+      </article>
+      <article class="service-card tilt-card reveal reveal-delay-3">
+        <div class="service-icon" aria-hidden="true">📱</div>
+        <h3>Mobile Development</h3>
+        <p>
+          Mengembangkan aplikasi mobile sederhana menggunakan Flutter yang
+          terintegrasi dengan backend dan database untuk mendukung
+          kebutuhan sistem digital modern.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!--  PROJECTS -->
+  <section id="projects" aria-label="Projects">
+    <div class="section-header reveal">
+      <div class="section-tag">// Karya Saya</div>
+      <h2 class="section-title">Project Unggulan</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card reveal reveal-delay-1">
+        <div class="project-img" aria-hidden="true">
+          <div class="project-img-placeholder">
+            <img src="assets/images/project/Proyek_1/beranda.png" alt="project">
+          </div>
+          <div class="project-overlay">
+            <!-- <a href="#" class="overlay-btn" id="proj1Preview" aria-label="Preview project 1">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </a> -->
+            <a href="https://healventory.gt.tc/public/" class="overlay-btn" id="proj1Link" target="_blank"
+              rel="noopener" aria-label="Open project 1 link">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Live
+            </a>
           </div>
         </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">PHP Native</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">MySQL</span>
+          </div>
+          <h3>Healventory &mdash; Sistem Manajemen & Monitoring Stok</h3>
+          <p>Aplikasi web berbasis PHP Native untuk monitoring dan manajemen stok barang secara real-time dengan
+            dashboard administrasi.</p>
+        </div>
+      </article>
 
-        <div class="timeline-item reveal reveal-delay-1" role="listitem">
-          <div class="timeline-dot" aria-hidden="true"></div>
-          <div class="timeline-date">2024 — Sekarang</div>
-          <div class="timeline-card">
-            <h3>Mahasiswa Aktif — Rekayasa Perangkat Lunak</h3>
-            <div class="org">🎓 Politeknik Negeri Indramayu</div>
-            <p>
-              Sedang menempuh pendidikan D4 Rekayasa Perangkat Lunak. Berbagai project akademik dan
-              non-akademik.
-            </p>
+      <article class="project-card reveal reveal-delay-2">
+        <div class="project-img" aria-hidden="true">
+          <div class="project-img-placeholder">
+            <img src="assets/images/project/Proyek_1/laporan.png" alt="project">
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="overlay-btn" id="proj2Preview" aria-label="Preview project 2">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </a>
           </div>
         </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">Laravel</span>
+            <span class="project-tag">API</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">VPS</span>
+          </div>
+          <h3>Kinara Pharma &mdash; Website Management System</h3>
+          <p>Sistem manajemen inventaris dan administrasi apotek. Mengelola alur stok obat, data transaksi, dan
+            menyediakan integrasi API yang aman untuk aplikasi mobile.</p>
+        </div>
+      </article>
 
-        <div class="timeline-item reveal reveal-delay-2" role="listitem">
-          <div class="timeline-dot" aria-hidden="true"></div>
-          <div class="timeline-date">2023</div>
-          <div class="timeline-card">
-            <h3>Web Development Bootcamp</h3>
-            <div class="org">🏅 Nama Lembaga / Platform</div>
-            <p>
-              Menyelesaikan bootcamp intensif yang mencakup full-stack web
-              development menggunakan teknologi modern seperti React, Node.js,
-              dan database.
-            </p>
+      <article class="project-card reveal reveal-delay-3">
+        <div class="project-img" aria-hidden="true">
+          <div class="project-img-placeholder">
+            <img src="assets/images/project/Proyek_2/MobileKinara.jpeg" alt="project">
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="overlay-btn" id="proj3Preview" aria-label="Preview project 3">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </a>
+            <!-- <a href="https://kelompok9.my.id/" class="overlay-btn" id="proj3Link" target="_blank" rel="noopener"
+              aria-label="Open project 3 link">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Live
+            </a> -->
           </div>
         </div>
-
-        <div class="timeline-item reveal reveal-delay-3" role="listitem">
-          <div class="timeline-dot" aria-hidden="true"></div>
-          <div class="timeline-date">2022</div>
-          <div class="timeline-card">
-            <h3>Peserta Program Digital Talent</h3>
-            <div class="org">📌 Nama Organisasi / Perusahaan</div>
-            <p>
-              Berpartisipasi dalam program pengembangan skill digital yang
-              berfokus pada praktik langsung di industri teknologi dan dunia
-              kerja.
-            </p>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">Midtrans</span>
+            <span class="project-tag">Dart</span>
+            <span class="project-tag">Mobile</span>
           </div>
+          <h3>Kinara Pharma &mdash; Mobile POS App</h3>
+          <p>Aplikasi mobile point-of-sales untuk pelanggan apotek. Terintegrasi langsung dengan sistem web backend,
+            memudahkan pembeli dalam melakukan transaksi pemesanan obat secara digital.</p>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- SECTION 7 — CONTACT -->
-    <section id="contact" aria-label="Contact">
-      <div class="section-header reveal">
-        <div class="section-tag">Hubungi Saya</div>
-        <h2 class="section-title">Let's Work Together</h2>
-        <div class="section-line" aria-hidden="true"></div>
-      </div>
-
-      <div class="contact-inner">
-        <div class="contact-info reveal">
-          <h3>
-            Siap Berkolaborasi?
-            <span style="color: var(--accent)">Mari Chat!</span>
-          </h3>
-          <p>
-            Saya selalu terbuka untuk project baru, kesempatan magang, atau pun
-            pekerjaan profesional. Jangan ragu untuk menghubungi saya!
-          </p>
-
-          <div class="contact-item">
-            <div class="contact-item-icon" aria-hidden="true">📧</div>
-            <div class="contact-item-text">
-              <div class="lbl">Email</div>
-              <div class="val">ilhamsimarmata.26@gmail.com</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon" aria-hidden="true">📱</div>
-            <div class="contact-item-text">
-              <div class="lbl">WhatsApp</div>
-              <div class="val">+62 812 6539 8468</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon" aria-hidden="true">📍</div>
-            <div class="contact-item-text">
-              <div class="lbl">Lokasi</div>
-              <div class="val">Indramayu, Jawa Barat, Indonesia</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-form reveal reveal-delay-2">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contactName">Nama</label>
-              <input
-                type="text"
-                id="contactName"
-                name="name"
-                placeholder="Nama kamu"
-                autocomplete="name"
-              />
-            </div>
-            <div class="form-group">
-              <label for="contactEmail">Email</label>
-              <input
-                type="email"
-                id="contactEmail"
-                name="email"
-                placeholder="email@kamu.com"
-                autocomplete="email"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="contactSubject">Subject</label>
-            <input
-              type="text"
-              id="contactSubject"
-              name="subject"
-              placeholder="Tentang project atau kolaborasi..."
-            />
-          </div>
-          <div class="form-group">
-            <label for="contactMessage">Pesan</label>
-            <textarea
-              id="contactMessage"
-              name="message"
-              rows="5"
-              placeholder="Ceritakan project atau kebutuhan kamu di sini..."
-            ></textarea>
-          </div>
-          <button
-            class="btn-primary"
-            id="contactSubmitBtn"
-            style="width: 100%; justify-content: center"
-            onclick="handleSubmit(this)"
-            type="button"
-          >
-            <svg
-              width="16"
-              height="16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <line x1="22" y1="2" x2="11" y2="13" />
-              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+      <article class="project-card reveal reveal-delay-1">
+        <div class="project-img" aria-hidden="true">
+          <div class="project-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
             </svg>
-            Kirim Pesan
-          </button>
+            <img src="assets/images/project/Personal_porto/ilhamghazali.png" alt="Personal Portfolio">
+          </div>
+          <div class="project-overlay">
+            <a href="#" class="overlay-btn" id="proj4Preview" aria-label="Preview project 4">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </a>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">HTML/CSS</span>
+            <span class="project-tag">JavaScript</span>
+          </div>
+          <h3>Interactive Personal Portfolio</h3>
+          <p>Website portofolio personal dengan desain modern. Menampilkan animasi 3D interaktif, transisi dinamis,
+            lightbox sertifikat, dan fitur dark/light mode toggle.</p>
+        </div>
+      </article>
+
+      <article class="project-card reveal reveal-delay-2">
+        <div class="project-img" aria-hidden="true">
+          <div class="project-img-placeholder">
+            <img src="assets/images/project/FitTrack/Login.png" alt="project">
+          </div>
+          <div class="project-overlay">
+            <a href="https://github.com/ilhams26/Catatan_Latihan_Olahraga" class="overlay-btn" id="proj5Preview"
+              aria-label="Preview project 5">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </a>
+            <a href="https://drive.google.com/file/d/1FeLTJwNedfyB-ZyUw3YMyUHEfEqVkaI7/view?usp=sharing"
+              class="overlay-btn" id="proj5Link" target="_blank" rel="noopener" aria-label="Open project 5 link">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Live
+            </a>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">Dart</span>
+          </div>
+          <h3>FitTrack &mdash; Workout Logger App</h3>
+          <p>Aplikasi mobile pencatat rutinitas olahraga harian. Membantu pengguna melacak riwayat dan progres latihan
+            secara terorganisir dengan antarmuka yang user-friendly.</p>
+        </div>
+      </article>
+
+      <article class="project-card reveal reveal-delay-3">
+        <div class="project-img" aria-hidden="true">
+          <div class="project-img-placeholder">
+            <img src="assets/images/project/UIUX/1.png" alt="Design UI/UX">
+          </div>
+          <div class="project-overlay">
+            <!-- <a href="https://www.figma.com/proto/RiWpuFxzWVVHA2MX0Qxx52/Scatch?node-id=672-632&p=f&t=NKMGYgUkiP9NXbDn-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=666%3A793"
+              class="overlay-btn" id="proj6Preview" aria-label="Preview project 6">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </a> -->
+            <a href="https://www.figma.com/proto/RiWpuFxzWVVHA2MX0Qxx52/Scatch?node-id=672-632&p=f&t=NKMGYgUkiP9NXbDn-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=666%3A793"
+              class="overlay-btn" id="proj6Link" target="_blank" rel="noopener" aria-label="Open project 6 link">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Live
+            </a>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag">Figma</span>
+            <span class="project-tag">UI/UX</span>
+          </div>
+          <h3>UI/UX Design &mdash; Techomfest</h3>
+          <p>Eksplorasi desain antarmuka aplikasi dengan fokus pada User Experience. Ikut serta dalam kompetisi UI/UX
+            Design di Politeknik Negeri Semarang.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="certificates" aria-label="Certificates and Awards">
+    <div class="section-header reveal">
+      <div class="section-tag">// Pencapaian Saya</div>
+      <h2 class="section-title">Sertifikat &amp; Penghargaan</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="certs-grid">
+
+      <article class="cert-card reveal reveal-delay-1" role="button" tabindex="0"
+        aria-label="Lihat sertifikat: Praktik Kerja Lapangan (PKL) PT Handayani Fiber Media">
+        <div class="cert-img-wrap">
+          <div class="cert-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <img src="assets/images/sertifikat/Serti_prakerin_depan.jpg" alt="Sertifikat PKL">
+          </div>
+          <div class="cert-overlay">
+            <button class="cert-preview-btn" aria-label="Preview sertifikat">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">Prakerin</div>
+          <h4>Praktik Kerja Lapangan (PKL)</h4>
+          <div class="cert-issuer">PT Handayani Fiber Media - 2023</div>
+        </div>
+      </article>
+
+      <article class="cert-card reveal reveal-delay-2" role="button" tabindex="0"
+        aria-label="Lihat sertifikat: System Administration I">
+        <div class="cert-img-wrap">
+          <div class="cert-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <img src="assets/images/sertifikat/Sertifikat_RedHad.jpg" alt="Sertifikat ">
+          </div>
+          <div class="cert-overlay">
+            <button class="cert-preview-btn" aria-label="Preview sertifikat">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">Course</div>
+          <h4>System Administration I</h4>
+          <div class="cert-issuer">Red Hat - 2025</div>
+        </div>
+      </article>
+
+      <article class="cert-card reveal reveal-delay-3" role="button" tabindex="0"
+        aria-label="Lihat sertifikat: Server Visit">
+        <div class="cert-img-wrap">
+          <div class="cert-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <img src="assets/images/sertifikat/serti_omadata.jpg" alt="Server visit PT Omadata">
+          </div>
+          <div class="cert-overlay">
+            <button class="cert-preview-btn" aria-label="Preview sertifikat">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">Seminar</div>
+          <h4>Data Center & Server Visit</h4>
+          <div class="cert-issuer">PT Omadata Surabaya - 2023</div>
+        </div>
+      </article>
+
+      <article class="cert-card reveal reveal-delay-1" role="button" tabindex="0"
+        aria-label="Lihat sertifikat: UI/UX Design Competition">
+        <div class="cert-img-wrap">
+          <div class="cert-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <img src="assets/images/sertifikat/PNBITC_IlhamGhazali.png" alt="Sertifikat UI/UX Design">
+          </div>
+          <div class="cert-overlay">
+            <button class="cert-preview-btn" aria-label="Preview sertifikat">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">Kompetisi</div>
+          <h4>Top 4 UI/UX Design Competition</h4>
+          <div class="cert-issuer">Politeknik Negeri Bali - 2025</div>
+        </div>
+      </article>
+
+      <article class="cert-card reveal reveal-delay-1" role="button" tabindex="0"
+        aria-label="Lihat sertifikat: HTML CSS Dasar">
+        <div class="cert-img-wrap">
+          <div class="cert-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <img src="assets/images/sertifikat/Code_Politan.jpg" alt="Sertifikat Generatif AI">
+          </div>
+          <div class="cert-overlay">
+            <button class="cert-preview-btn" aria-label="Preview sertifikat">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">Course</div>
+          <h4>Generative AI</h4>
+          <div class="cert-issuer">CodePolitan - 2026</div>
+        </div>
+      </article>
+
+      <article class="cert-card reveal reveal-delay-4" role="button" tabindex="0"
+        aria-label="Lihat sertifikat: Piagam Prestasi">
+        <div class="cert-img-wrap">
+          <div class="cert-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <img src="assets/images/sertifikat/Serti_Wimnus.jpg" alt="Sertifikat Wirausaha Muda Nusantara">
+          </div>
+          <div class="cert-overlay">
+            <button class="cert-preview-btn" aria-label="Preview piagam">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">Seminar Indonesia Recovery</div>
+          <h4>Seminar Nasional Enterpreneur</h4>
+          <div class="cert-issuer">Wirausaha Muda Nusantara - 2022</div>
+        </div>
+      </article>
+
+      <article class="cert-card reveal reveal-delay-2" role="button" tabindex="0"
+        aria-label="Lihat sertifikat: Webinar Teknologi Digital">
+        <div class="cert-img-wrap">
+          <div class="cert-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <img src="assets/images/sertifikat/Techomfest_UI_UX_Ilham Ghazali.jpg" alt="Sertifikat UI/UX Techomfest">
+          </div>
+          <div class="cert-overlay">
+            <button class="cert-preview-btn" aria-label="Preview sertifikat">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">Kompetisi</div>
+          <h4>UI/UX Design Competition</h4>
+          <div class="cert-issuer">Politeknik Negeri Semarang - 2026</div>
+        </div>
+      </article>
+
+      <article class="cert-card reveal reveal-delay-3" role="button" tabindex="0"
+        aria-label="Lihat sertifikat: Git & GitHub">
+        <div class="cert-img-wrap">
+          <div class="cert-img-placeholder">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <img src="assets/images/sertifikat/Serti_UKK.jpg" alt="Sertifikat PKL Handayani FM">
+          </div>
+          <div class="cert-overlay">
+            <button class="cert-preview-btn" aria-label="Preview sertifikat">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Preview
+            </button>
+          </div>
+        </div>
+        <div class="cert-info">
+          <div class="cert-badge">Sertifikasi Profesi</div>
+          <h4>Administator Jaringan Muda</h4>
+          <div class="cert-issuer">Lembaga Sertifikasi Profesi (LSP) <br>Telematika - 2023</div>
+        </div>
+      </article>
+
+
+    </div>
+  </section>
+
+  <div id="cert-modal" role="dialog" aria-modal="true" aria-label="Preview sertifikat">
+    <div class="cert-modal-backdrop"></div>
+    <div class="cert-modal-box">
+      <button class="cert-modal-close" id="certModalClose" aria-label="Tutup preview">
+        ✕
+      </button>
+      <img class="cert-modal-img" src="" alt="Preview sertifikat" loading="lazy" />
+      <div class="cert-modal-footer">
+        <h3></h3>
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" aria-label="Experience and Education">
+    <div class="section-header reveal">
+      <div class="section-tag">// Perjalanan Saya</div>
+      <h2 class="section-title">Experience &amp; Education</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="timeline" role="list">
+
+      <div class="timeline-item reveal reveal-delay-1" role="listitem">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div class="timeline-date">2024 — Sekarang</div>
+        <div class="timeline-card">
+          <h3>Mahasiswa Aktif — Rekayasa Perangkat Lunak</h3>
+          <div class="org">🎓 Politeknik Negeri Indramayu</div>
+          <p>
+            Menempuh studi D4 Rekayasa Perangkat Lunak (Semester 5) dengan IPK 3.86.
+            Berfokus pada arsitektur sistem, pengembangan web dan mobile terintegrasi,
+            serta implementasi keamanan siber dan deployment pada project.
+          </p>
         </div>
       </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-inner">
-        <a href="#home" class="footer-logo"><span>Ilham</span>Ghazali</a>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#certificates">Sertifikat</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <p>Dibuat oleh M. Ilham Ghazali Simarmata</p>
-        <p>© 2026</p>
+      <div class="timeline-item reveal reveal-delay-1" role="listitem">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div class="timeline-date">September — November 2023</div>
+        <div class="timeline-card">
+          <h3>Praktik Kerja Lapangan — 3 Bulan</h3>
+          <div class="org">💼 PT Handayani Fiber Media</div>
+          <p>
+            Berpengalaman langsung di lapangan selama 3 bulan dalam instalasi jaringan,
+            inspeksi box ODP, dan penanganan kabel fiber optik. Terlatih berkomunikasi
+            dengan pelanggan untuk melakukan troubleshooting dan memberikan solusi teknis
+            secara efisien dan profesional.
+          </p>
+        </div>
       </div>
-    </footer>
 
-    <!-- SCRIPTS -->
-    <!-- Canvas BG -->
-    <script src="js/canvas-bg.js"></script>
+      <div class="timeline-item reveal reveal-delay-1" role="listitem">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div class="timeline-date">2021 — 2024</div>
+        <div class="timeline-card">
+          <h3>SMK — Teknik Komputer dan Jaringan</h3>
+          <div class="org">🎓 SMK Al-Muhajirin Depok</div>
+          <p>
+            Mempelajari fundamental teknologi informasi dengan spesialisasi pada
+            infrastruktur jaringan, perakitan perangkat keras, dan sistem operasi.
+            Menjadi landasan kuat untuk keahlian IT Support dan Networking saat ini.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Three.js CDN — loaded async (deferred) -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
-      defer
-    ></script>
-    <script src="js/3d-avatar.js" defer></script>
+  <!-- CONTACT -->
+  <section id="contact" aria-label="Contact">
+    <div class="section-header reveal">
+      <div class="section-tag">Hubungi Saya</div>
+      <h2 class="section-title">Let's Work Together</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
 
-    <!-- App scripts -->
-    <script src="js/animations.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/certificates.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+    <div class="contact-inner">
+      <div class="contact-info reveal">
+        <h3>
+          Siap Berkolaborasi?
+          <span style="color: var(--accent)">Mari Chat!</span>
+        </h3>
+        <p>
+          Saya selalu terbuka untuk project baru, kesempatan magang, atau pun
+          pekerjaan profesional. Jangan ragu untuk menghubungi saya!
+        </p>
+
+        <div class="contact-item">
+          <div class="contact-item-icon" aria-hidden="true">📧</div>
+          <div class="contact-item-text">
+            <div class="lbl">Email</div>
+            <div class="val">ilhamsimarmata.26@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon" aria-hidden="true">📱</div>
+          <div class="contact-item-text">
+            <div class="lbl">WhatsApp</div>
+            <div class="val">+62 812 6539 8468</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon" aria-hidden="true">📍</div>
+          <div class="contact-item-text">
+            <div class="lbl">Lokasi</div>
+            <div class="val">Indramayu, Jawa Barat, Indonesia</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal reveal-delay-2">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contactName">Nama</label>
+            <input type="text" id="contactName" name="name" placeholder="Nama" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" name="email" placeholder="email@kamu.com" autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contactSubject">Subject</label>
+          <input type="text" id="contactSubject" name="subject" placeholder="Tentang project atau kolaborasi..." />
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Pesan</label>
+          <textarea id="contactMessage" name="message" rows="5"
+            placeholder="Ceritakan perihal yang ingin kamu sampaikan..."></textarea>
+        </div>
+        <button class="btn-primary" id="contactSubmitBtn" style="width: 100%; justify-content: center"
+          onclick="handleSubmit(this)" type="button">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          </svg>
+          Kirim Pesan
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <a href="#home" class="footer-logo"><span>Ilham</span>Ghazali</a>
+      <p>Dibuat oleh M. Ilham Ghazali Simarmata</p>
+      <p>© 2026</p>
+    </div>
+  </footer>
+
+  <script src="js/canvas-bg.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="js/3d-avatar.js" defer></script>
+
+  <script src="js/animations.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/certificates.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
