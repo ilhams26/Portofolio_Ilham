@@ -77,7 +77,7 @@
     });
   });
 
-  // SMOOTH SCROLL (anchor links)
+  // SMOOTH SCROLL
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const href = a.getAttribute("href");
@@ -90,17 +90,101 @@
   });
 
   // CONTACT FORM SUBMIT
-  window.handleSubmit = function (btn) {
-    const originalHTML = btn.innerHTML;
-    btn.textContent = "✅ Terkirim!";
-    btn.style.background = "#22c55e";
-    btn.disabled = true;
+  const contactForm = document.getElementById("contactForm");
+  const submitBtn = document.getElementById("contactSubmitBtn");
+  const formStatus = document.getElementById("formStatus");
 
-    setTimeout(() => {
-      btn.innerHTML = originalHTML;
-      btn.style.background = "";
-      btn.disabled = false;
-    }, 3000);
+  function showFormStatus(message, type) {
+    if (!formStatus) return;
+    formStatus.className = "form-status " + type;
+    formStatus.innerHTML = message;
+  }
+
+  if (contactForm && submitBtn) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Bot protection: abaikan jika input tersembunyi terisi
+      const honeypot = contactForm.querySelector('input[name="_honey"]')?.value;
+      if (honeypot) return;
+
+      const name = document.getElementById("contactName")?.value.trim();
+      const email = document.getElementById("contactEmail")?.value.trim();
+      const subject = document.getElementById("contactSubject")?.value.trim();
+      const message = document.getElementById("contactMessage")?.value.trim();
+
+      if (!name || !email || !message) {
+        showFormStatus("⚠️ Mohon lengkapi semua kolom yang wajib diisi.", "error");
+        return;
+      }
+
+      // Deteksi jika dibuka langsung sebagai file:/// (bukan melalui web server)
+      if (window.location.protocol === "file:") {
+        showFormStatus(
+          "⚠️ Pengiriman pesan memerlukan web server.<br>Silakan buka melalui server lokal: <strong><a href='http://localhost/Portofolio_Ilham/index.html#contact' style='color: var(--accent); text-decoration: underline;'>http://localhost/Portofolio_Ilham/</a></strong> atau saat website sudah di-hosting online.",
+          "error"
+        );
+        return;
+      }
+
+      const originalBtnHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="spinner" aria-hidden="true"></span>
+        <span>Mengirim...</span>
+      `;
+      showFormStatus("", "");
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/ilhamsimarmata.26@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            _subject: `Pesan Portofolio dari ${name}: ${subject || "Kolaborasi / Project"}`,
+            message: message,
+            _template: "table",
+          }),
+        });
+
+        const result = await response.json();
+        const isSuccess = response.ok && (result.success === true || result.success === "true");
+
+        if (isSuccess) {
+          showFormStatus(
+            "🎉 Terima kasih! Pesan Anda berhasil dikirim. Saya akan segera menghubungi Anda melalui email.",
+            "success"
+          );
+          contactForm.reset();
+          submitBtn.style.background = "#22c55e";
+          submitBtn.innerHTML = `<span>Terkirim!</span>`;
+        } else {
+          throw new Error("FormSubmit rejected");
+        }
+      } catch (err) {
+        console.error("Gagal mengirim pesan:", err);
+        showFormStatus(
+          `⚠️ Maaf, terjadi kendala saat mengirim pesan. Silakan coba beberapa saat lagi atau hubungi saya langsung melalui <a href="mailto:ilhamsimarmata.26@gmail.com" style="color: var(--accent); text-decoration: underline;">Email</a> atau <a href="https://wa.me/6281265398468" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">WhatsApp</a>.`,
+          "error"
+        );
+      } finally {
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
+          submitBtn.style.background = "";
+        }, 4000);
+      }
+    });
+  }
+
+  window.handleSubmit = function (btn) {
+    if (contactForm) {
+      contactForm.requestSubmit();
+    }
   };
 
   // NAV SCROLL EFFECT

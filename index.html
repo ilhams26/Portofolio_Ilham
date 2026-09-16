@@ -476,7 +476,7 @@
       <article class="project-card reveal reveal-delay-2">
         <div class="project-img" aria-hidden="true">
           <div class="project-img-placeholder">
-            <img src="assets/images/project/FitTrack/Login.png" alt="project">
+            <img src="assets/images/project/FitTrack/FitTrack.png" alt="project">
           </div>
           <div class="project-overlay">
             <a href="https://github.com/ilhams26/Catatan_Latihan_Olahraga" class="overlay-btn" id="proj5Preview"
@@ -863,36 +863,44 @@
         </div>
       </div>
 
-      <div class="contact-form reveal reveal-delay-2">
+      <form class="contact-form reveal reveal-delay-2" id="contactForm">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+
         <div class="form-row">
           <div class="form-group">
             <label for="contactName">Nama</label>
-            <input type="text" id="contactName" name="name" placeholder="Nama" autocomplete="name" />
+            <input type="text" id="contactName" name="name" placeholder="Nama Anda" autocomplete="name" maxlength="100" required />
           </div>
           <div class="form-group">
             <label for="contactEmail">Email</label>
-            <input type="email" id="contactEmail" name="email" placeholder="email@kamu.com" autocomplete="email" />
+            <input type="email" id="contactEmail" name="email" placeholder="email@kamu.com" autocomplete="email"
+              maxlength="100" required />
           </div>
         </div>
         <div class="form-group">
           <label for="contactSubject">Subject</label>
-          <input type="text" id="contactSubject" name="subject" placeholder="Tentang project atau kolaborasi..." />
+          <input type="text" id="contactSubject" name="subject" placeholder="Tentang project atau kolaborasi..."
+            maxlength="150" required />
         </div>
         <div class="form-group">
           <label for="contactMessage">Pesan</label>
           <textarea id="contactMessage" name="message" rows="5"
-            placeholder="Ceritakan perihal yang ingin kamu sampaikan..."></textarea>
+            placeholder="Ceritakan perihal yang ingin kamu sampaikan..." maxlength="3000" required></textarea>
         </div>
-        <button class="btn-primary" id="contactSubmitBtn" style="width: 100%; justify-content: center"
-          onclick="handleSubmit(this)" type="button">
+
+        <div id="formStatus" class="form-status" aria-live="polite"></div>
+
+        <button class="btn-primary" id="contactSubmitBtn" style="width: 100%; justify-content: center" type="submit">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
             aria-hidden="true">
             <line x1="22" y1="2" x2="11" y2="13" />
             <polygon points="22 2 15 22 11 13 2 9 22 2" />
           </svg>
-          Kirim Pesan
+          <span>Kirim Pesan</span>
         </button>
-      </div>
+      </form>
     </div>
   </section>
 
