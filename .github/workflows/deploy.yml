@@ -32,7 +32,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
 
-          server-dir: /htdocs/
+          server-dir: ilhamghazali.ct.ws/htdocs/
           exclude: |
             **/.git*
             **/.git*/**
