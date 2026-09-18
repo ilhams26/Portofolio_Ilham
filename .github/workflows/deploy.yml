@@ -1,60 +1,38 @@
-# ============================================================
-#  deploy.yml — CI/CD Portfolio HTML/CSS/JS ke InfinityFree
-#  
-#  Cara kerja:
-#  1. Kamu push kode ke branch 'main'
-#  2. GitHub Actions otomatis jalan
-#  3. File di-upload ke InfinityFree via FTP
-#  4. Website langsung update!
-#
-#  Setup sebelum pakai:
-#  GitHub repo → Settings → Secrets and variables → Actions
-#  Tambahkan 3 secret:
-#    - FTP_SERVER   : ftpupload.net
-#    - FTP_USERNAME : epiz_XXXXXXX@namadomain.com
-#    - FTP_PASSWORD : password_ftp_kamu
-# ============================================================
-
-name: 🚀 Deploy Portfolio ke InfinityFree
+name: Deploy Portfolio ke InfinityFree
 
 on:
   push:
     branches:
-      - main          # Jalan otomatis kalau push ke branch main
-  workflow_dispatch:  # Bisa juga di-trigger manual dari GitHub
+      - main          
+  workflow_dispatch: 
 
 jobs:
   deploy:
-    name: Upload via FTP ke InfinityFree
+    name: Upload via FTP
     runs-on: ubuntu-latest
 
     steps:
 
-      # ── Step 1: Checkout kode dari GitHub ────────────────────
-      - name: 📥 Checkout repository
+      # Step 1: Checkout kode dari GitHub
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ── Step 2: (Opsional) Validasi struktur file ─────────────
-      - name: 🔍 Cek struktur file
+      # Step 2: Validasi struktur file 
+      - name: Cek struktur file
         run: |
-          echo "====== File yang akan di-deploy ======"
           ls -la
-          echo "====== Isi folder assets ============="
           ls -la assets/ 2>/dev/null || echo "Folder assets tidak ditemukan"
 
-      # ── Step 3: Upload ke InfinityFree via FTP ────────────────
-      - name: 📤 Deploy via FTP ke InfinityFree
+      # Step 3: Upload ke InfinityFree via FTP
+      - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          # Credentials dari GitHub Secrets (JANGAN ditulis langsung di sini!)
+
           server  : ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
 
-          # Folder tujuan di InfinityFree (jangan ubah ini)
           server-dir: /htdocs/
-
-          # File/folder yang TIDAK perlu di-upload
           exclude: |
             **/.git*
             **/.git*/**
@@ -68,10 +46,5 @@ jobs:
             **/composer.*
             **/package-lock.json
 
-      # ── Step 4: Notifikasi selesai ────────────────────────────
       - name: ✅ Deploy selesai!
-        run: |
-          echo "=================================================="
-          echo " SUKSES! Portfolio berhasil di-deploy ke InfinityFree"
-          echo " Cek website kamu sekarang!"
-          echo "=================================================="
+        run: echo " SUKSES! Portfolio berhasil di-deploy ke InfinityFree"

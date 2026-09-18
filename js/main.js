@@ -104,7 +104,6 @@
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      // Bot protection: abaikan jika input tersembunyi terisi
       const honeypot = contactForm.querySelector('input[name="_honey"]')?.value;
       if (honeypot) return;
 
