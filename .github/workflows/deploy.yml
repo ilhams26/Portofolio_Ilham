@@ -1,50 +1,50 @@
-# name: Deploy Portfolio ke InfinityFree
+name: Deploy Portfolio ke InfinityFree
 
-# on:
-#   push:
-#     branches:
-#       - main          
-#   workflow_dispatch: 
+on:
+  push:
+    branches:
+      - main          
+  workflow_dispatch: 
 
-# jobs:
-#   deploy:
-#     name: Upload via FTP
-#     runs-on: ubuntu-latest
+jobs:
+  deploy:
+    name: Upload via FTP
+    runs-on: ubuntu-latest
 
-#     steps:
+    steps:
 
-#       # Step 1: Checkout kode dari GitHub
-#       - name: Checkout repository
-#         uses: actions/checkout@v4
+      # Step 1: Checkout kode dari GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-#       # Step 2: Validasi struktur file 
-#       - name: Cek struktur file
-#         run: |
-#           ls -la
-#           ls -la assets/ 2>/dev/null || echo "Folder assets tidak ditemukan"
+      # Step 2: Validasi struktur file 
+      - name: Cek struktur file
+        run: |
+          ls -la
+          ls -la assets/ 2>/dev/null || echo "Folder assets tidak ditemukan"
 
-#       # Step 3: Upload ke InfinityFree via FTP
-#       - name: Deploy via FTP
-#         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-#         with:
+      # Step 3: Upload ke InfinityFree via FTP
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
 
-#           server  : ${{ secrets.FTP_SERVER }}
-#           username: ${{ secrets.FTP_USERNAME }}
-#           password: ${{ secrets.FTP_PASSWORD }}
+          server  : ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
 
-#           server-dir: ilhamghazali.ct.ws/htdocs/
-#           exclude: |
-#             **/.git*
-#             **/.git*/**
-#             **/node_modules/**
-#             **/.github/**
-#             **/README.md
-#             **/.env
-#             **/.env.*
-#             **/LICENSE
-#             **/.gitignore
-#             **/composer.*
-#             **/package-lock.json
+          server-dir: ilhamghazali.ct.ws/htdocs/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
+            **/README.md
+            **/.env
+            **/.env.*
+            **/LICENSE
+            **/.gitignore
+            **/composer.*
+            **/package-lock.json
 
-#       - name: ✅ Deploy selesai!
-#         run: echo " SUKSES! Portfolio berhasil di-deploy ke InfinityFree"
+      - name: ✅ Deploy selesai!
+        run: echo " SUKSES! Portfolio berhasil di-deploy ke InfinityFree"
