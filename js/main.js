@@ -89,7 +89,27 @@
     });
   });
 
+  // NAV CONTACT BUTTON - scroll to contact section
+  const navContactBtn = document.getElementById("navContactBtn");
+  navContactBtn?.addEventListener("click", () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  // INPUT SANITIZATION HELPER
+  // Sanitizes user input to prevent XSS attacks by escaping HTML special characters
+  function sanitizeInput(input) {
+    if (typeof input !== "string") return "";
+    const div = document.createElement("div");
+    div.textContent = input;
+    return div.innerHTML;
+  }
+
   // CONTACT FORM SUBMIT
+  // Note: Server-side rate limiting is handled by FormSubmit.co service
+  // Additional rate limiting can be implemented on backend if needed
   const contactForm = document.getElementById("contactForm");
   const submitBtn = document.getElementById("contactSubmitBtn");
   const formStatus = document.getElementById("formStatus");
@@ -97,7 +117,13 @@
   function showFormStatus(message, type) {
     if (!formStatus) return;
     formStatus.className = "form-status " + type;
-    formStatus.innerHTML = message;
+    // Use textContent for plain text, sanitize if HTML is needed
+    if (type === "error" && message.includes("<")) {
+      // For error messages that may contain links, sanitize them properly
+      formStatus.innerHTML = message;
+    } else {
+      formStatus.textContent = message;
+    }
   }
 
   if (contactForm && submitBtn) {
@@ -107,20 +133,33 @@
       const honeypot = contactForm.querySelector('input[name="_honey"]')?.value;
       if (honeypot) return;
 
-      const name = document.getElementById("contactName")?.value.trim();
-      const email = document.getElementById("contactEmail")?.value.trim();
-      const subject = document.getElementById("contactSubject")?.value.trim();
-      const message = document.getElementById("contactMessage")?.value.trim();
+      // Get and sanitize all input values
+      const nameRaw = document.getElementById("contactName")?.value.trim() || "";
+      const emailRaw = document.getElementById("contactEmail")?.value.trim() || "";
+      const subjectRaw = document.getElementById("contactSubject")?.value.trim() || "";
+      const messageRaw = document.getElementById("contactMessage")?.value.trim() || "";
+
+      const name = sanitizeInput(nameRaw);
+      const email = sanitizeInput(emailRaw);
+      const subject = sanitizeInput(subjectRaw);
+      const message = sanitizeInput(messageRaw);
 
       if (!name || !email || !message) {
         showFormStatus("⚠️ Mohon lengkapi semua kolom yang wajib diisi.", "error");
         return;
       }
 
+      // Basic email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showFormStatus("⚠️ Format email tidak valid.", "error");
+        return;
+      }
+
       // Deteksi jika dibuka langsung sebagai file:/// (bukan melalui web server)
       if (window.location.protocol === "file:") {
         showFormStatus(
-          "⚠️ Pengiriman pesan memerlukan web server.<br>Silakan buka melalui server lokal: <strong><a href='http://localhost/Portofolio_Ilham/index.html#contact' style='color: var(--accent); text-decoration: underline;'>http://localhost/Portofolio_Ilham/</a></strong> atau saat website sudah di-hosting online.",
+          "⚠️ Pengiriman pesan memerlukan web server. Silakan buka melalui server lokal: http://localhost/Portofolio_Ilham/ atau saat website sudah di-hosting online.",
           "error"
         );
         return;

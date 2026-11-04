@@ -1,12 +1,31 @@
 # 1. Security Headers
 <IfModule mod_headers.c>
-    Header always set X-Frame-Options "SAMEORIGIN"
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-    Header set X-Content-Type-Options "nosniff"
-    Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' https:;"
+    # Prevent clickjacking attacks - DENY prevents any framing
+    Header always set X-Frame-Options "DENY"
+    
+    # Enforce HTTPS with HSTS (1 year, includeSubDomains, preload-ready)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Control referrer information leakage
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Restrict browser features via Permissions-Policy
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+    
+    # Content Security Policy - Strict policy with external CDN allowlist
+    # Note: Three.js and FormSubmit.co are explicitly allowed. Google Fonts domains included.
+    # All inline scripts/styles are externalized or use external files only.
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;"
 </IfModule>
 
-# 2. Browser Caching 
+# 2. Hide Server Version Information
+ServerTokens Prod
+ServerSignature Off
+
+# 3. Browser Caching 
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType image/webp "access plus 1 year"
