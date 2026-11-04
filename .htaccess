@@ -1,31 +1,22 @@
-# 1. Security Headers
+# Directory Index
+DirectoryIndex index.html
+
+# 1. Security Headers (dibungkus IfModule agar kompatibel dengan shared hosting / InfinityFree)
 <IfModule mod_headers.c>
-    # Prevent clickjacking attacks - DENY prevents any framing
-    Header always set X-Frame-Options "DENY"
-    
-    # Enforce HTTPS with HSTS (1 year, includeSubDomains, preload-ready)
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
     
     # Prevent MIME-type sniffing
-    Header always set X-Content-Type-Options "nosniff"
+    Header set X-Content-Type-Options "nosniff"
     
-    # Control referrer information leakage
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    # Referrer policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Restrict browser features via Permissions-Policy
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
-    
-    # Content Security Policy - Strict policy with external CDN allowlist
-    # Note: Three.js and FormSubmit.co are explicitly allowed. Google Fonts domains included.
-    # All inline scripts/styles are externalized or use external files only.
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;"
+    # Content Security Policy (Allowlist untuk assets, fonts, CDN Three.js, dan FormSubmit)
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formsubmit.co;"
 </IfModule>
 
-# 2. Hide Server Version Information
-ServerTokens Prod
-ServerSignature Off
-
-# 3. Browser Caching 
+# 2. Browser Caching
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType image/webp "access plus 1 year"
