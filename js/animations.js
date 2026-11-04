@@ -1,6 +1,10 @@
 (function () {
   "use strict";
 
+  /* ===== DETECT TOUCH DEVICE ===== */
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
   /* ===== SCROLL REVEAL WITH STAGGER ANIMATION ===== */
   const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -8,10 +12,11 @@
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
           
-          // Stagger animation for child elements
+          // Stagger animation for child elements - reduced delay on mobile
+          const staggerDelay = isMobile ? 0.05 : 0.1;
           const children = entry.target.querySelectorAll('.stagger-child, .skill-chip, .service-card, .project-card, .cert-card, .project-tag');
           children.forEach((child, index) => {
-            child.style.transitionDelay = `${index * 0.1}s`;
+            child.style.transitionDelay = `${index * staggerDelay}s`;
             child.style.opacity = '0';
             child.style.transform = 'translateY(20px)';
             setTimeout(() => {
@@ -25,45 +30,47 @@
         }
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    { threshold: isMobile ? 0.05 : 0.12, rootMargin: "0px 0px -60px 0px" }
   );
 
   document.querySelectorAll(".reveal").forEach((el) => {
     revealObserver.observe(el);
   });
 
-  /* ===== PARALLAX SCROLLING ===== */
-  let ticking = false;
-  
-  function updateParallax() {
-    const scrollY = window.scrollY;
+  /* ===== PARALLAX SCROLLING (Disabled on mobile/touch devices) ===== */
+  if (!isMobile && !isTouchDevice && window.matchMedia('(min-width: 769px)').matches) {
+    let ticking = false;
     
-    // Hero visual parallax
-    const heroVisual = document.querySelector('.hero-visual');
-    if (heroVisual) {
-      const heroOffset = scrollY * 0.5;
-      heroVisual.style.transform = `translateY(${heroOffset}px)`;
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      
+      // Hero visual parallax
+      const heroVisual = document.querySelector('.hero-visual');
+      if (heroVisual) {
+        const heroOffset = scrollY * 0.5;
+        heroVisual.style.transform = `translateY(${heroOffset}px)`;
+      }
+      
+      // Background shapes parallax (avatar rings, badges)
+      const parallaxShapes = document.querySelectorAll('.avatar-ring, .float-badge, .about-deco');
+      parallaxShapes.forEach((shape, index) => {
+        const speed = 0.3 + (index * 0.1);
+        const offset = scrollY * speed;
+        shape.style.transform = `translateY(${offset}px)`;
+      });
+      
+      ticking = false;
     }
     
-    // Background shapes parallax (avatar rings, badges)
-    const parallaxShapes = document.querySelectorAll('.avatar-ring, .float-badge, .about-deco');
-    parallaxShapes.forEach((shape, index) => {
-      const speed = 0.3 + (index * 0.1);
-      const offset = scrollY * speed;
-      shape.style.transform = `translateY(${offset}px)`;
-    });
-    
-    ticking = false;
-  }
-  
-  function requestParallaxTick() {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
+    function requestParallaxTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
     }
+    
+    window.addEventListener('scroll', requestParallaxTick, { passive: true });
   }
-  
-  window.addEventListener('scroll', requestParallaxTick, { passive: true });
 
   /* ===== SPLIT TEXT ANIMATION FOR HERO H1 ===== */
   function splitTextReveal() {
@@ -162,31 +169,47 @@
     });
   });
 
-  /* ===== PROJECT CARD IMAGE PARALLAX ON HOVER ===== */
-  document.querySelectorAll('.project-card').forEach((card) => {
-    const img = card.querySelector('.project-img img, .project-img-placeholder');
-    if (!img) return;
-    
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+  /* ===== PROJECT CARD IMAGE PARALLAX ON HOVER (Desktop only) ===== */
+  if (!isTouchDevice) {
+    document.querySelectorAll('.project-card').forEach((card) => {
+      const img = card.querySelector('.project-img img, .project-img-placeholder');
+      if (!img) return;
       
-      const percentX = (x - centerX) / centerX;
-      const percentY = (y - centerY) / centerY;
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const percentX = (x - centerX) / centerX;
+        const percentY = (y - centerY) / centerY;
+        
+        const moveX = percentX * 15;
+        const moveY = percentY * 15;
+        
+        img.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+      });
       
-      const moveX = percentX * 15;
-      const moveY = percentY * 15;
-      
-      img.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+      card.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1) translate(0, 0)';
+      });
     });
-    
-    card.addEventListener('mouseleave', () => {
-      img.style.transform = 'scale(1) translate(0, 0)';
+  } else {
+    // On touch devices, add tap-to-expand effect for project cards
+    document.querySelectorAll('.project-card').forEach((card) => {
+      let expanded = false;
+      card.addEventListener('click', (e) => {
+        // Don't prevent default - allow normal link navigation
+        if (!expanded) {
+          card.style.transform = 'scale(1.02)';
+          setTimeout(() => {
+            card.style.transform = '';
+          }, 200);
+        }
+      });
     });
-  });
+  }
 
   /* ===== TYPEWRITER ===== */
   const texts = [
@@ -281,25 +304,27 @@
     }, { passive: true });
   }
 
-  /* ===== 3D TILT EFFECT ===== */
-  document.querySelectorAll(".tilt-card").forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
-      const rotX = ((y - cy) / cy) * -7;
-      const rotY = ((x - cx) / cx) * 7;
-      card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+  /* ===== 3D TILT EFFECT (Desktop only) ===== */
+  if (!isTouchDevice) {
+    document.querySelectorAll(".tilt-card").forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rotX = ((y - cy) / cy) * -7;
+        const rotY = ((x - cx) / cx) * 7;
+        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
+        card.style.transition = "transform 0.5s ease";
+      });
+      card.addEventListener("mouseenter", () => {
+        card.style.transition = "transform 0.1s ease";
+      });
     });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
-      card.style.transition = "transform 0.5s ease";
-    });
-    card.addEventListener("mouseenter", () => {
-      card.style.transition = "transform 0.1s ease";
-    });
-  });
+  }
 
 })();

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanitization Test - Security Verification</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-case {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+        .test-case.fail {
+            border-left-color: #f44336;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f1f1f1;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        h1 { color: #333; }
+        h3 { margin: 0 0 10px 0; color: #555; }
+        .pass { color: #4CAF50; font-weight: bold; }
+        .fail { color: #f44336; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🔒 Input Sanitization Test Suite</h1>
+    <p>This page tests the sanitizeInput() function from main.js to verify XSS protection.</p>
+
+    <div id="test-results"></div>
+
+    <script>
+        // Copy of sanitizeInput function from main.js
+        function sanitizeInput(input) {
+            if (typeof input !== "string") return "";
+            const div = document.createElement("div");
+            div.textContent = input;
+            return div.innerHTML;
+        }
+
+        // Test cases
+        const testCases = [
+            {
+                name: "Basic XSS Script Tag",
+                input: "<script>alert('XSS')</script>",
+                expected: "&lt;script&gt;alert('XSS')&lt;/script&gt;",
+                shouldContain: ["&lt;", "&gt;"],
+                shouldNotContain: ["<script>", "alert"]
+            },
+            {
+                name: "Image XSS Payload",
+                input: "<img src=x onerror=alert('XSS')>",
+                expected: "&lt;img src=x onerror=alert('XSS')&gt;",
+                shouldContain: ["&lt;", "&gt;"],
+                shouldNotContain: ["<img", "onerror="]
+            },
+            {
+                name: "JavaScript Protocol",
+                input: "javascript:alert('XSS')",
+                expected: "javascript:alert('XSS')",
+                shouldContain: ["javascript:"],
+                shouldNotContain: [] // This is escaped via textContent
+            },
+            {
+                name: "HTML Entity Injection",
+                input: "&lt;div&gt;test&lt;/div&gt;",
+                expected: "&amp;lt;div&amp;gt;test&amp;lt;/div&amp;gt;",
+                shouldContain: ["&amp;"],
+                shouldNotContain: []
+            },
+            {
+                name: "Normal User Input",
+                input: "John Doe <john@example.com>",
+                expected: "John Doe &lt;john@example.com&gt;",
+                shouldContain: ["John Doe", "&lt;", "&gt;"],
+                shouldNotContain: []
+            },
+            {
+                name: "SQL Injection Attempt (should still be escaped)",
+                input: "'; DROP TABLE users; --",
+                expected: "'; DROP TABLE users; --",
+                shouldContain: ["DROP TABLE"],
+                shouldNotContain: [] // SQL injection is backend concern, but we escape HTML
+            },
+            {
+                name: "SVG XSS Vector",
+                input: "<svg onload=alert('XSS')>",
+                expected: "&lt;svg onload=alert('XSS')&gt;",
+                shouldContain: ["&lt;", "&gt;"],
+                shouldNotContain: ["<svg", "onload="]
+            },
+            {
+                name: "Empty String",
+                input: "",
+                expected: "",
+                shouldContain: [],
+                shouldNotContain: []
+            }
+        ];
+
+        // Run tests
+        const resultsContainer = document.getElementById('test-results');
+        let passCount = 0;
+        let failCount = 0;
+
+        testCases.forEach((test, index) => {
+            const result = sanitizeInput(test.input);
+            let passed = true;
+            let reasons = [];
+
+            // Check shouldContain
+            test.shouldContain.forEach(str => {
+                if (!result.includes(str)) {
+                    passed = false;
+                    reasons.push(`Missing expected substring: "${str}"`);
+                }
+            });
+
+            // Check shouldNotContain
+            test.shouldNotContain.forEach(str => {
+                if (result.includes(str)) {
+                    passed = false;
+                    reasons.push(`Contains forbidden substring: "${str}"`);
+                }
+            });
+
+            if (passed) passCount++;
+            else failCount++;
+
+            const testDiv = document.createElement('div');
+            testDiv.className = `test-case ${passed ? '' : 'fail'}`;
+            testDiv.innerHTML = `
+                <h3>Test ${index + 1}: ${test.name} <span class="${passed ? 'pass' : 'fail'}">[${passed ? 'PASS' : 'FAIL'}]</span></h3>
+                <div><strong>Input:</strong></div>
+                <pre>${test.input}</pre>
+                <div><strong>Sanitized Output:</strong></div>
+                <div class="result">${result}</div>
+                <div><strong>Raw Output:</strong></div>
+                <pre>${result}</pre>
+                ${reasons.length > 0 ? `<div style="color: #f44336; margin-top: 10px;"><strong>Issues:</strong><ul>${reasons.map(r => `<li>${r}</li>`).join('')}</ul></div>` : ''}
+            `;
+            resultsContainer.appendChild(testDiv);
+        });
+
+        // Summary
+        const summaryDiv = document.createElement('div');
+        summaryDiv.style.cssText = 'background: #e3f2fd; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #2196F3;';
+        summaryDiv.innerHTML = `
+            <h2>Test Summary</h2>
+            <p><span class="pass">✓ Passed: ${passCount}</span> | <span class="fail">✗ Failed: ${failCount}</span></p>
+            <p><strong>Total Tests:</strong> ${testCases.length}</p>
+            <p><strong>Success Rate:</strong> ${((passCount / testCases.length) * 100).toFixed(1)}%</p>
+        `;
+        resultsContainer.insertBefore(summaryDiv, resultsContainer.firstChild);
+
+        console.log(`Sanitization Tests Complete: ${passCount}/${testCases.length} passed`);
+    </script>
+</body>
+</html>

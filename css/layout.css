@@ -105,9 +105,12 @@ body > nav {
   gap: 1.2rem;
   z-index: 999;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
 }
 .mobile-nav.open {
    display: flex;
+   transform: translateY(0);
 }
 .mobile-nav a {
   text-decoration: none;
@@ -140,13 +143,13 @@ section {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 60%);
-  clip-path: polygon(0 0, 100% 0, 100% 60%, 0 80%);
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-soft), transparent);
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
   z-index: -1;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 #home::after {
   content: "";
@@ -397,6 +400,11 @@ footer p {
   .stats-row { justify-content: center; }
   .hero-text p { margin-inline: auto; }
 
+  /* Reduce parallax effect on tablet */
+  #home::before {
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 85%);
+  }
+
   .about-inner { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .projects-grid { grid-template-columns: 1fr 1fr; }
@@ -409,7 +417,7 @@ footer p {
 }
 
 /* ===================================================
-   RESPONSIVE — Mobile (≤ 600px)
+   RESPONSIVE — Mobile (≤ 768px)
    =================================================== */
 @media (max-width: 768px) {
   :root { --section-p: 5rem 5%; }
@@ -425,4 +433,39 @@ footer p {
 
   body { cursor: auto; }
   #cursor, #cursor-ring { display: none; }
+
+  /* Simplify complex shapes on mobile */
+  .about-img-frame::before {
+    display: none;
+  }
+  
+  .about-deco {
+    display: none;
+  }
+
+  .cert-card {
+    border-radius: 8px;
+  }
+
+  /* Reduce animation distances for mobile */
+  .reveal {
+    transform: translateY(15px);
+  }
+
+  /* Simplify hero shapes on mobile */
+  #home::before {
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 95%);
+  }
+
+  .hero-visual::before,
+  .hero-visual::after {
+    display: none;
+  }
+}
+
+/* ===================================================
+   RESPONSIVE — Small Mobile (≤ 375px)
+   =================================================== */
+@media (max-width: 375px) {
+  .certs-grid { grid-template-columns: 1fr; }
 }

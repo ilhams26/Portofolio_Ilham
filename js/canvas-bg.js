@@ -9,8 +9,11 @@
   let mouseX = -1000, mouseY = -1000;
   let gradientOffset = 0;
 
+  // Detect mobile device
+  const isMobile = window.innerWidth <= 768;
+
   const CONFIG = {
-    count:      55,
+    count:      isMobile ? 25 : 55,  // Reduced particle count on mobile
     maxRadius:  2.2,
     speed:      0.35,
     connectDist: 130,
@@ -37,14 +40,16 @@
 
   function init() {
     particles = [];
-    for (let i = 0; i < CONFIG.count; i++) particles.push(createParticle());
+    // Update particle count based on current width
+    const currentCount = window.innerWidth <= 768 ? 25 : 55;
+    for (let i = 0; i < currentCount; i++) particles.push(createParticle());
   }
 
-  // Mouse tracking
+  // Mouse tracking with passive listener
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-  });
+  }, { passive: true });
 
   // Create animated gradient mesh background
   function drawGradientMesh() {
@@ -203,8 +208,13 @@
   init();
   draw();
 
+  // Debounced resize handler
+  let resizeTimeout;
   window.addEventListener("resize", () => {
-    resize();
-    init();
-  });
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      resize();
+      init();
+    }, 150);
+  }, { passive: true });
 })();

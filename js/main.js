@@ -66,6 +66,13 @@
     mobileNav?.classList.toggle("open", isOpen);
     hamburger.setAttribute("aria-expanded", isOpen);
     mobileNav?.setAttribute("aria-hidden", !isOpen);
+    
+    // Body scroll lock when mobile menu is open
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   });
 
   mobileNav?.querySelectorAll("a").forEach((link) => {
@@ -74,6 +81,8 @@
       mobileNav?.classList.remove("open");
       hamburger?.setAttribute("aria-expanded", "false");
       mobileNav?.setAttribute("aria-hidden", "true");
+      // Restore scroll
+      document.body.style.overflow = '';
     });
   });
 

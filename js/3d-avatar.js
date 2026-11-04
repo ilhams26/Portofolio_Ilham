@@ -6,18 +6,22 @@
   const container = document.getElementById("canvas-container-3d");
   if (!container) return;
 
+  // Detect mobile device
+  const isMobile = window.innerWidth <= 768;
+
   /* Scene Setup */
   const scene    = new THREE.Scene();
   const camera   = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.1, 100);
   camera.position.z = 4;
 
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // cap at 2x for perf
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !isMobile });
+  // Mobile: use pixel ratio 1, Desktop: cap at 2x for performance
+  renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
 
-  /* Wireframe Icosahedron */
-  const geoSphere = new THREE.IcosahedronGeometry(1.9, 1);
+  /* Wireframe Icosahedron - reduce detail on mobile */
+  const geoSphere = new THREE.IcosahedronGeometry(1.9, isMobile ? 0 : 1);
   const matSphere = new THREE.MeshBasicMaterial({
     color:       0xc084fc,
     wireframe:   true,
@@ -69,17 +73,20 @@
     targetY = (e.clientY - window.innerHeight / 2) * 0.0008;
   }, { passive: true });
 
-  /* Animation */
+  /* Animation - pause when off-screen */
   let isVisible = true;
   const clock   = new THREE.Clock();
 
+  // Intersection Observer to pause rendering when off-screen
   const observer = new IntersectionObserver(([entry]) => {
     isVisible = entry.isIntersecting;
-  });
+  }, { threshold: 0.1 });
   observer.observe(container);
 
   (function animate() {
     requestAnimationFrame(animate);
+    
+    // Skip rendering if not visible
     if (!isVisible) return;
 
     const t = clock.getElapsedTime();
