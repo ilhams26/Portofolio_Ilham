@@ -180,7 +180,6 @@ section {
   justify-content: center;
   position: relative;
   animation: fadeUp 0.8s 0.3s ease both;
-  transform: translate(10%, -5%);
 }
 .hero-visual::before {
   content: "";
@@ -402,6 +401,7 @@ footer p {
   .float-badge.b1 { right: 0; }
   .float-badge.b2 { left: 0; }
   .float-badge.b3 { right: 0; }
+  .float-badge.b4 { left: 0; }
   .hero-text .tag,
   .hero-btns,
   .hero-socials,

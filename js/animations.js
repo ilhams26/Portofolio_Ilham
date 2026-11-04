@@ -14,13 +14,14 @@
           
           // Stagger animation for child elements - reduced delay on mobile
           const staggerDelay = isMobile ? 0.05 : 0.1;
-          const children = entry.target.querySelectorAll('.stagger-child, .skill-chip, .service-card, .project-card, .cert-card, .project-tag');
+          const children = entry.target.querySelectorAll('.stagger-child, .skill-chip, .service-card, .project-card, .cert-card, .project-tag, .timeline-card');
           children.forEach((child, index) => {
             child.style.transitionDelay = `${index * staggerDelay}s`;
+            child.classList.add('visible');
             child.style.opacity = '0';
-            child.style.transform = 'translateY(20px)';
+            child.style.transform = 'translateY(16px)';
             setTimeout(() => {
-              child.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+              child.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
               child.style.opacity = '1';
               child.style.transform = 'translateY(0)';
             }, 50);
@@ -30,7 +31,7 @@
         }
       });
     },
-    { threshold: isMobile ? 0.05 : 0.12, rootMargin: "0px 0px -60px 0px" }
+    { threshold: isMobile ? 0.05 : 0.1, rootMargin: "0px 0px -20px 0px" }
   );
 
   document.querySelectorAll(".reveal").forEach((el) => {
@@ -82,34 +83,52 @@
     heroH1.dataset.splitDone = 'true';
     
     const textElements = heroH1.querySelectorAll('.name, .line2');
+    let globalCharIndex = 0;
+
     textElements.forEach((element) => {
       const isName = element.classList.contains('name');
-      const text = element.textContent.trim();
+      const rawText = element.textContent.trim();
       element.textContent = '';
-      element.style.display = 'inline-block';
       
-      text.split('').forEach((char, index) => {
-        const span = document.createElement('span');
-        span.textContent = char === ' ' ? '\u00A0' : char;
-        span.style.display = 'inline-block';
-        span.style.opacity = '0';
-        span.style.transform = 'translateY(20px) scale(0.8)';
-        span.style.transition = `opacity 0.5s ease ${index * 0.04}s, transform 0.5s ease ${index * 0.04}s`;
-        if (isName) {
-          span.style.background = 'var(--gradient-accent)';
-          span.style.webkitBackgroundClip = 'text';
-          span.style.backgroundClip = 'text';
-          span.style.webkitTextFillColor = 'transparent';
+      // Split by words first so words never break in half
+      const words = rawText.split(/\s+/);
+      
+      words.forEach((word, wordIndex) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word-wrap';
+        wordSpan.style.display = 'inline-block';
+        wordSpan.style.whiteSpace = 'nowrap';
+        if (wordIndex < words.length - 1) {
+          wordSpan.style.marginRight = '0.28em';
         }
-        element.appendChild(span);
-        
-        // Trigger animation
-        requestAnimationFrame(() => {
-          setTimeout(() => {
-            span.style.opacity = '1';
-            span.style.transform = 'translateY(0) scale(1)';
-          }, 50);
+
+        word.split('').forEach((char) => {
+          const charSpan = document.createElement('span');
+          charSpan.textContent = char;
+          charSpan.style.display = 'inline-block';
+          charSpan.style.opacity = '0';
+          charSpan.style.transform = 'translateY(16px) scale(0.85)';
+          charSpan.style.transition = `opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) ${globalCharIndex * 0.035}s, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) ${globalCharIndex * 0.035}s`;
+          
+          if (isName) {
+            charSpan.style.background = 'var(--gradient-accent)';
+            charSpan.style.webkitBackgroundClip = 'text';
+            charSpan.style.backgroundClip = 'text';
+            charSpan.style.webkitTextFillColor = 'transparent';
+          }
+          
+          wordSpan.appendChild(charSpan);
+          globalCharIndex++;
+
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              charSpan.style.opacity = '1';
+              charSpan.style.transform = 'translateY(0) scale(1)';
+            }, 60);
+          });
         });
+
+        element.appendChild(wordSpan);
       });
     });
   }
