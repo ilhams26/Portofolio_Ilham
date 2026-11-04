@@ -12,16 +12,15 @@ body > nav {
   z-index: 1000;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  background: rgba(9, 9, 18, 0.65);
-  border-bottom: 1px solid rgba(124, 92, 252, 0.2);
-  border-image: linear-gradient(90deg, transparent, var(--accent), transparent) 1;
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
   transition: background var(--transition), border-color var(--transition);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 [data-theme="light"] .navbar,
 [data-theme="light"] body > nav {
-  background: rgba(244, 243, 255, 0.75);
-  border-bottom: 1px solid rgba(124, 92, 252, 0.15);
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
 }
 .nav-logo {
   font-family: "Syne", sans-serif;
@@ -47,18 +46,19 @@ body > nav {
   font-weight: 500;
   transition: color var(--transition-fast);
   position: relative;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 1rem;
   border-radius: 50px;
 }
 .nav-links a::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--accent-soft), var(--accent-border));
+  background: var(--accent-soft);
   border-radius: 50px;
   opacity: 0;
   transition: opacity var(--transition-med);
   z-index: -1;
+  box-shadow: 0 0 0 var(--accent-glow);
 }
 .nav-links a::after {
   content: "";
@@ -154,13 +154,13 @@ section {
 #home::after {
   content: "";
   position: absolute;
-  top: 15%;
-  right: 10%;
-  width: 200px;
-  height: 200px;
-  background: var(--gradient-radial);
+  top: 20%;
+  left: 10%;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  opacity: 0.15;
+  border: 2px solid var(--accent-border);
+  opacity: 0.3;
   z-index: -1;
   animation: float1 6s ease-in-out infinite;
 }
@@ -180,6 +180,7 @@ section {
   justify-content: center;
   position: relative;
   animation: fadeUp 0.8s 0.3s ease both;
+  transform: translate(10%, -5%);
 }
 .hero-visual::before {
   content: "";
@@ -197,13 +198,13 @@ section {
 .hero-visual::after {
   content: "";
   position: absolute;
-  bottom: -5%;
-  right: -5%;
-  width: 100px;
-  height: 100px;
-  background: var(--accent-2);
-  border-radius: 50%;
-  opacity: 0.1;
+  bottom: 10%;
+  right: -15%;
+  width: 120px;
+  height: 120px;
+  border: 3px solid var(--accent-border);
+  border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
+  opacity: 0.2;
   animation: float2 8s ease-in-out infinite;
   z-index: -1;
 }
@@ -238,6 +239,10 @@ section {
   gap: 1.5rem;
   max-width: var(--max-w);
   margin: 0 auto;
+}
+.large-card {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
 /* ===== PROJECTS ===== */
@@ -340,7 +345,7 @@ footer::after {
   background-image: 
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 30px 30px;
+  background-size: 50px 50px;
   opacity: 0.3;
   z-index: -1;
 }
@@ -368,9 +373,12 @@ footer::after {
 .footer-links a {
   color: var(--text-muted);
   font-size: 0.85rem;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
-.footer-links a:hover { color: var(--accent); }
+.footer-links a:hover { 
+  color: var(--accent); 
+  transform: translateY(-2px);
+}
 footer p {
   color: var(--text-dim);
   font-size: 0.82rem;
@@ -402,11 +410,17 @@ footer p {
 
   /* Reduce parallax effect on tablet */
   #home::before {
-    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 85%);
+    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  
+  .hero-visual::before,
+  .hero-visual::after {
+    transform: scale(0.7);
   }
 
   .about-inner { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .large-card { grid-column: span 1; grid-row: span 1; }
   .projects-grid { grid-template-columns: 1fr 1fr; }
   .certs-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -435,6 +449,11 @@ footer p {
   #cursor, #cursor-ring { display: none; }
 
   /* Simplify complex shapes on mobile */
+  .about-img-frame {
+    border-radius: var(--radius);
+    animation: none;
+  }
+  
   .about-img-frame::before {
     display: none;
   }
@@ -445,11 +464,23 @@ footer p {
 
   .cert-card {
     border-radius: 8px;
+    transform: none !important;
+  }
+  
+  .cert-card:hover {
+    transform: translateY(-6px) !important;
   }
 
   /* Reduce animation distances for mobile */
   .reveal {
     transform: translateY(15px);
+  }
+  
+  /* Use simplified shadow system on mobile */
+  .project-card:hover,
+  .service-card:hover,
+  .contact-item:hover {
+    box-shadow: var(--shadow-sm);
   }
 
   /* Simplify hero shapes on mobile */
@@ -468,4 +499,10 @@ footer p {
    =================================================== */
 @media (max-width: 375px) {
   .certs-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== CSS PERFORMANCE ===== */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 }

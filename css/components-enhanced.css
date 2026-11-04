@@ -561,6 +561,13 @@
   position: relative;
   box-shadow: 0 8px 32px rgba(124, 92, 252, 0.15);
   transition: all var(--transition-med);
+  animation: morphBlob 8s ease-in-out infinite;
+}
+
+@keyframes morphBlob {
+  0%, 100% { border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%; }
+  33% { border-radius: 40% 60% 50% 50% / 60% 40% 70% 30%; }
+  66% { border-radius: 70% 30% 30% 70% / 50% 50% 40% 60%; }
 }
 
 .about-img-frame:hover {
@@ -596,15 +603,16 @@
 
 .about-deco {
   position: absolute;
-  bottom: -20px;
-  right: -20px;
-  width: 150px;
-  height: 150px;
-  border: 3px solid var(--accent);
-  border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%;
-  opacity: 0.18;
+  bottom: -30px;
+  right: -30px;
+  width: 60%;
+  height: 60%;
+  border: 3px solid;
+  border-image: var(--gradient-accent) 1;
+  border-radius: 30% 70% 70% 30% / 60% 40% 60% 40%;
+  opacity: 0.4;
   z-index: -1;
-  animation: blobMorph 8s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .exp-badge {
@@ -708,11 +716,10 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: var(--gradient-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-soft), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
 .service-card::after {
@@ -734,7 +741,7 @@
 }
 
 .service-card:hover::before {
-  transform: scaleX(1);
+  opacity: 1;
 }
 
 .service-card:hover::after {
@@ -778,6 +785,9 @@
 .project-card {
   background: var(--card);
   border: 1px solid var(--border);
+  border-left: 4px solid transparent;
+  border-image: var(--gradient-accent) 1;
+  border-image-slice: 1;
   border-radius: var(--radius);
   overflow: hidden;
   transition: all 0.4s;
@@ -801,6 +811,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: rotate(-1deg);
+  transition: transform 0.5s;
+}
+
+.project-card:hover .project-img {
+  transform: rotate(0deg) scale(1.02);
 }
 
 .project-img::before {
@@ -895,8 +911,7 @@
 }
 
 .project-info {
-  padding: 1.5rem;
-  padding-left: 1.8rem;
+  padding: 1.5rem 1.2rem 1.5rem 2rem;
   flex: 1;
 }
 
@@ -1051,17 +1066,19 @@
 }
 
 .cert-badge {
-  font-size: 0.68rem;
-  font-weight: 600;
+  position: absolute;
+  top: 12px;
+  right: -8px;
+  background: var(--gradient-accent);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
-  color: var(--accent);
   letter-spacing: 0.08em;
-  margin-bottom: 0.25rem;
-  position: relative;
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  background: var(--accent-soft);
-  border-radius: 4px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 10;
 }
 
 .cert-info h4 {
@@ -1282,29 +1299,33 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.9rem 1.1rem;
+  padding: 1.2rem;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   margin-bottom: 1.2rem;
   transition: all var(--transition-med);
+  box-shadow: var(--shadow-sm);
 }
 
 .contact-item:hover {
   border-color: var(--accent-border);
-  transform: translateX(4px);
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
 }
 
 .contact-item-icon {
   width: 42px;
   height: 42px;
-  background: var(--accent-soft);
-  border-radius: var(--radius-xs);
+  background: var(--gradient-accent);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
   flex-shrink: 0;
+  color: white;
+  box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 .contact-item-text .lbl {
@@ -1329,15 +1350,36 @@
 
 .form-group {
   margin-bottom: 1.2rem;
+  position: relative;
 }
 
 .form-group label {
-  display: block;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  font-weight: 600;
+  position: absolute;
+  top: 0.85rem;
+  left: 1.1rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  margin-bottom: 0.45rem;
+  pointer-events: none;
+  transition: all 0.3s;
+  background: transparent;
+  padding: 0;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label {
+  top: -0.6rem;
+  left: 0.8rem;
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: var(--card);
+  padding: 0 0.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
@@ -1432,4 +1474,13 @@
   to {
     opacity: 1;
   }
+}
+
+
+/* ===== CSS PERFORMANCE - CONTAINMENT ===== */
+.project-card,
+.service-card,
+.cert-card,
+.timeline-card {
+  contain: layout style paint;
 }
