@@ -5,22 +5,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Portofolio M. Ilham Ghazali Simarmata — Junior Web Developer dari Jawa Barat, Indonesia. Spesialisasi web development, UI/UX design, dan solusi digital kreatif." />
+    content="Portofolio M. Ilham Ghazali Simarmata — Junior Web Developer & IT Support dari Jawa Barat, Indonesia. Spesialisasi web development, UI/UX design, dan solusi digital kreatif." />
   <meta name="keywords"
-    content="web developer, junior developer, portofolio, Ilham Ghazali, Politeknik Negeri Indramayu, HTML CSS JavaScript" />
+    content="web developer, junior developer, portofolio, Ilham Ghazali, Politeknik Negeri Indramayu, HTML CSS JavaScript, Laravel, Flutter" />
   <meta name="author" content="M. Ilham Ghazali Simarmata" />
-  <meta property="og:title" content="M. Ilham Ghazali Simarmata — Junior Developer" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#090912" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="M. Ilham Ghazali Simarmata — Junior Developer & IT Support" />
   <meta property="og:description"
-    content="Portofolio web developer muda. Seorang mahasiswa RPL dari Politeknik Negeri Indramayu" />
+    content="Portofolio web developer muda. Mahasiswa RPL dari Politeknik Negeri Indramayu dengan keahlian web development, UI/UX, dan IT support." />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="id_ID" />
 
   <title>M. Ilham Ghazali Simarmata - Portofolio</title>
 
+  <!-- Google Fonts Preconnect & Stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" />
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/motion-graphics.css" />
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="css/variables.css" as="style" />
+  <link rel="preload" href="css/components-enhanced.css" as="style" />
+  <link rel="preload" href="css/layout.css" as="style" />
+  <link rel="preload" href="assets/images/profil_ilham.jpeg" as="image" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components-enhanced.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "M. Ilham Ghazali Simarmata",
+    "jobTitle": "Junior Web Developer & IT Support",
+    "nationality": "Indonesia",
+    "alumniOf": "Politeknik Negeri Indramayu",
+    "sameAs": [
+      "https://github.com/ilhams26",
+      "https://www.linkedin.com/in/ilhamghazali",
+      "https://www.instagram.com/hams_gz"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -78,7 +111,7 @@
         </div>
 
         <h1>
-          Hello, I'm<br />
+          <span class="greeting">Hello, I'm</span><br />
           <span class="name">M. Ilham Ghazali</span>
           <span class="line2">Simarmata</span>
         </h1>
@@ -174,7 +207,7 @@
           <div class="avatar-ring r1" aria-hidden="true"></div>
           <div class="avatar-blob" aria-hidden="true">
             <div class="avatar-placeholder">
-              <img src="assets/images/profil_ilham.jpeg" alt="" class="profile-img" loading="lazy" decoding="async" />
+              <img src="assets/images/profil_ilham.jpeg" alt="M. Ilham Ghazali Simarmata" class="profile-img" fetchpriority="high" loading="eager" decoding="async" width="280" height="280" />
               <span>Ilham Ghazali</span>
             </div>
           </div>
@@ -207,7 +240,7 @@
       <div class="about-image-wrap reveal">
         <div class="about-img-frame">
           <div class="about-img-placeholder">
-            <img src="assets/images/ilham_9-12.jpeg" alt="" class="profile-img" loading="lazy" decoding="async" />
+            <img src="assets/images/ilham_9-12.jpeg" alt="Foto M. Ilham Ghazali" class="profile-img" loading="lazy" decoding="async" width="380" height="475" />
           </div>
         </div>
         <div class="about-deco" aria-hidden="true"></div>
@@ -347,7 +380,7 @@
       <article class="project-card reveal reveal-delay-2">
         <div class="project-img" aria-hidden="true">
           <div class="project-img-placeholder">
-            <img src="assets/images/project/Proyek_1/laporan.png" alt="project">
+            <img src="assets/images/project/Proyek_1/laporan.png" alt="Kinara Pharma Web Management" loading="lazy" decoding="async" width="400" height="250">
           </div>
           <div class="project-overlay">
             <a href="https://github.com/ilhams26/KinaraPharma" class="overlay-btn" id="proj2Preview"
@@ -376,7 +409,7 @@
       <article class="project-card reveal reveal-delay-3">
         <div class="project-img" aria-hidden="true">
           <div class="project-img-placeholder">
-            <img src="assets/images/project/Proyek_2/Mobile_KinaraPharma.png" alt="project flutter">
+            <img src="assets/images/project/Proyek_2/Mobile_KinaraPharma.png" alt="Kinara Pharma Mobile POS App" loading="lazy" decoding="async" width="400" height="250">
           </div>
           <div class="project-overlay">
             <a href="https://github.com/ilhams26/Mobile_KinaraPharma" class="overlay-btn" id="proj3Preview"
@@ -387,15 +420,6 @@
               </svg>
               Preview
             </a>
-            <!-- <a href="https://kelompok9.my.id/" class="overlay-btn" id="proj3Link" target="_blank" rel="noopener"
-              aria-label="Open project 3 link">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-              Live
-            </a> -->
           </div>
         </div>
         <div class="project-info">
@@ -414,7 +438,7 @@
       <article class="project-card reveal reveal-delay-2">
         <div class="project-img" aria-hidden="true">
           <div class="project-img-placeholder">
-            <img src="assets/images/project/FitTrack/FitTrack.png" alt="project mobile">
+            <img src="assets/images/project/FitTrack/FitTrack.png" alt="FitTrack Workout Logger App" loading="lazy" decoding="async" width="400" height="250">
           </div>
           <div class="project-overlay">
             <a href="https://github.com/ilhams26/Catatan_Latihan_Olahraga" class="overlay-btn" id="proj5Preview"
@@ -450,7 +474,7 @@
       <article class="project-card reveal reveal-delay-1">
         <div class="project-img" aria-hidden="true">
           <div class="project-img-placeholder">
-            <img src="assets/images/project/Personal_porto/ilhamghazali.png" alt="Personal Portfolio">
+            <img src="assets/images/project/Personal_porto/ilhamghazali.png" alt="Personal Portfolio Website" loading="lazy" decoding="async" width="400" height="250">
           </div>
           <div class="project-overlay">
             <a href="#" class="overlay-btn" id="proj4Preview" aria-label="Preview project 4">
@@ -476,17 +500,9 @@
       <article class="project-card reveal reveal-delay-3">
         <div class="project-img" aria-hidden="true">
           <div class="project-img-placeholder">
-            <img src="assets/images/project/UIUX/Techomfest_Prototype.png" alt="Design UI/UX">
+            <img src="assets/images/project/UIUX/Techomfest_Prototype.png" alt="Techomfest UI/UX Design" loading="lazy" decoding="async" width="400" height="250">
           </div>
           <div class="project-overlay">
-            <!-- <a href="https://www.figma.com/proto/RiWpuFxzWVVHA2MX0Qxx52/Scatch?node-id=672-632&p=f&t=NKMGYgUkiP9NXbDn-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=666%3A793"
-              class="overlay-btn" id="proj6Preview" aria-label="Preview project 6">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              Preview
-            </a> -->
             <a href="https://www.figma.com/proto/RiWpuFxzWVVHA2MX0Qxx52/Scatch?node-id=672-632&p=f&t=NKMGYgUkiP9NXbDn-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=666%3A793"
               class="overlay-btn" id="proj6Link" target="_blank" rel="noopener" aria-label="Open project 6 link">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -511,16 +527,9 @@
       <article class="project-card reveal reveal-delay-1">
         <div class="project-img" aria-hidden="true">
           <div class="project-img-placeholder">
-            <img src="assets/images/project/Proyek_1/beranda.png" alt="project">
+            <img src="assets/images/project/Proyek_1/beranda.png" alt="Healventory Management" loading="lazy" decoding="async" width="400" height="250">
           </div>
           <div class="project-overlay">
-            <!-- <a href="#" class="overlay-btn" id="proj1Preview" aria-label="Preview project 1">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              Preview
-            </a> -->
             <a href="https://healventory.gt.tc/public/" class="overlay-btn" id="proj1Link" target="_blank"
               rel="noopener" aria-label="Open project 1 link">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -558,10 +567,7 @@
       <article class="cert-card reveal reveal-delay-1" role="button" tabindex="0"
         aria-label="Lihat sertifikat: Praktik Kerja Lapangan (PKL) PT Handayani Fiber Media">
         <div class="cert-img-wrap">
-          <div class="cert-img-placeholder">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <img src="assets/images/sertifikat/Serti_prakerin_depan.jpg" alt="Sertifikat PKL">
-          </div>
+          <img src="assets/images/sertifikat/Serti_prakerin_depan.jpg" alt="Sertifikat PKL" loading="lazy" decoding="async" width="400" height="300">
           <div class="cert-overlay">
             <button class="cert-preview-btn" aria-label="Preview sertifikat">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -582,10 +588,7 @@
       <article class="cert-card reveal reveal-delay-2" role="button" tabindex="0"
         aria-label="Lihat sertifikat: System Administration I">
         <div class="cert-img-wrap">
-          <div class="cert-img-placeholder">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <img src="assets/images/sertifikat/Sertifikat_RedHad.jpg" alt="Sertifikat ">
-          </div>
+          <img src="assets/images/sertifikat/Sertifikat_RedHad.jpg" alt="Sertifikat Red Hat" loading="lazy" decoding="async" width="400" height="300">
           <div class="cert-overlay">
             <button class="cert-preview-btn" aria-label="Preview sertifikat">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -606,10 +609,7 @@
       <article class="cert-card reveal reveal-delay-3" role="button" tabindex="0"
         aria-label="Lihat sertifikat: Server Visit">
         <div class="cert-img-wrap">
-          <div class="cert-img-placeholder">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <img src="assets/images/sertifikat/serti_omadata.jpg" alt="Server visit PT Omadata">
-          </div>
+          <img src="assets/images/sertifikat/serti_omadata.jpg" alt="Server visit PT Omadata" loading="lazy" decoding="async" width="400" height="300">
           <div class="cert-overlay">
             <button class="cert-preview-btn" aria-label="Preview sertifikat">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -630,10 +630,7 @@
       <article class="cert-card reveal reveal-delay-1" role="button" tabindex="0"
         aria-label="Lihat sertifikat: UI/UX Design Competition">
         <div class="cert-img-wrap">
-          <div class="cert-img-placeholder">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <img src="assets/images/sertifikat/PNBITC_IlhamGhazali.png" alt="Sertifikat UI/UX Design">
-          </div>
+          <img src="assets/images/sertifikat/PNBITC_IlhamGhazali.png" alt="Sertifikat UI/UX Design" loading="lazy" decoding="async" width="400" height="300">
           <div class="cert-overlay">
             <button class="cert-preview-btn" aria-label="Preview sertifikat">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -654,10 +651,7 @@
       <article class="cert-card reveal reveal-delay-1" role="button" tabindex="0"
         aria-label="Lihat sertifikat: HTML CSS Dasar">
         <div class="cert-img-wrap">
-          <div class="cert-img-placeholder">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <img src="assets/images/sertifikat/Code_Politan.jpg" alt="Sertifikat Generatif AI">
-          </div>
+          <img src="assets/images/sertifikat/Code_Politan.jpg" alt="Sertifikat Generatif AI" loading="lazy" decoding="async" width="400" height="300">
           <div class="cert-overlay">
             <button class="cert-preview-btn" aria-label="Preview sertifikat">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -678,10 +672,7 @@
       <article class="cert-card reveal reveal-delay-4" role="button" tabindex="0"
         aria-label="Lihat sertifikat: Piagam Prestasi">
         <div class="cert-img-wrap">
-          <div class="cert-img-placeholder">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <img src="assets/images/sertifikat/Serti_Wimnus.jpg" alt="Sertifikat Wirausaha Muda Nusantara">
-          </div>
+          <img src="assets/images/sertifikat/Serti_Wimnus.jpg" alt="Sertifikat Wirausaha Muda Nusantara" loading="lazy" decoding="async" width="400" height="300">
           <div class="cert-overlay">
             <button class="cert-preview-btn" aria-label="Preview piagam">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -702,10 +693,7 @@
       <article class="cert-card reveal reveal-delay-2" role="button" tabindex="0"
         aria-label="Lihat sertifikat: Webinar Teknologi Digital">
         <div class="cert-img-wrap">
-          <div class="cert-img-placeholder">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <img src="assets/images/sertifikat/Techomfest_UI_UX_Ilham Ghazali.jpg" alt="Sertifikat UI/UX Techomfest">
-          </div>
+          <img src="assets/images/sertifikat/Techomfest_UI_UX_Ilham Ghazali.jpg" alt="Sertifikat UI/UX Techomfest" loading="lazy" decoding="async" width="400" height="300">
           <div class="cert-overlay">
             <button class="cert-preview-btn" aria-label="Preview sertifikat">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -726,10 +714,7 @@
       <article class="cert-card reveal reveal-delay-3" role="button" tabindex="0"
         aria-label="Lihat sertifikat: Git & GitHub">
         <div class="cert-img-wrap">
-          <div class="cert-img-placeholder">
-            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <img src="assets/images/sertifikat/Serti_UKK.jpg" alt="Sertifikat PKL Handayani FM">
-          </div>
+          <img src="assets/images/sertifikat/Serti_UKK.jpg" alt="Sertifikat PKL Handayani FM" loading="lazy" decoding="async" width="400" height="300">
           <div class="cert-overlay">
             <button class="cert-preview-btn" aria-label="Preview sertifikat">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -869,25 +854,25 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label for="contactName">Nama</label>
-            <input type="text" id="contactName" name="name" placeholder="Nama Anda" autocomplete="name" maxlength="100"
+            <input type="text" id="contactName" name="name" placeholder=" " autocomplete="name" maxlength="100"
               required />
+            <label for="contactName">Nama</label>
           </div>
           <div class="form-group">
-            <label for="contactEmail">Email</label>
-            <input type="email" id="contactEmail" name="email" placeholder="email@kamu.com" autocomplete="email"
+            <input type="email" id="contactEmail" name="email" placeholder=" " autocomplete="email"
               maxlength="100" required />
+            <label for="contactEmail">Email</label>
           </div>
         </div>
         <div class="form-group">
-          <label for="contactSubject">Subject</label>
-          <input type="text" id="contactSubject" name="subject" placeholder="Tentang project atau kolaborasi..."
+          <input type="text" id="contactSubject" name="subject" placeholder=" "
             maxlength="150" required />
+          <label for="contactSubject">Subject</label>
         </div>
         <div class="form-group">
-          <label for="contactMessage">Pesan</label>
           <textarea id="contactMessage" name="message" rows="5"
-            placeholder="Ceritakan perihal yang ingin kamu sampaikan..." maxlength="3000" required></textarea>
+            placeholder=" " maxlength="3000" required></textarea>
+          <label for="contactMessage">Pesan</label>
         </div>
 
         <div id="formStatus" class="form-status" aria-live="polite"></div>
@@ -912,19 +897,16 @@
     </div>
   </footer>
 
-  <script src="js/canvas-bg.js"></script>
-
+  <script src="js/canvas-bg.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" 
           integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" 
           crossorigin="anonymous" 
           defer></script>
   <script src="js/3d-avatar.js" defer></script>
-
-  <script src="js/animations.js"></script>
-  <script src="js/cursor.js"></script>
-  <script src="js/micro-interactions.js"></script>
-  <script src="js/certificates.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/cursor.js" defer></script>
+  <script src="js/certificates.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 
 </html>

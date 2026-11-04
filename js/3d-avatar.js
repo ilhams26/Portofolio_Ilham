@@ -102,11 +102,15 @@
     renderer.render(scene, camera);
   })();
 
-  /* Resize */
+  /* Resize with debounce */
+  let resizeTimer;
   window.addEventListener("resize", () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }, 150);
   }, { passive: true });
 
 })();

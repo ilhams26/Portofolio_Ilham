@@ -77,9 +77,14 @@
     const heroH1 = document.querySelector('.hero-text h1');
     if (!heroH1) return;
     
+    // Avoid double splitting
+    if (heroH1.dataset.splitDone) return;
+    heroH1.dataset.splitDone = 'true';
+    
     const textElements = heroH1.querySelectorAll('.name, .line2');
     textElements.forEach((element) => {
-      const text = element.textContent;
+      const isName = element.classList.contains('name');
+      const text = element.textContent.trim();
       element.textContent = '';
       element.style.display = 'inline-block';
       
@@ -89,14 +94,22 @@
         span.style.display = 'inline-block';
         span.style.opacity = '0';
         span.style.transform = 'translateY(20px) scale(0.8)';
-        span.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
+        span.style.transition = `opacity 0.5s ease ${index * 0.04}s, transform 0.5s ease ${index * 0.04}s`;
+        if (isName) {
+          span.style.background = 'var(--gradient-accent)';
+          span.style.webkitBackgroundClip = 'text';
+          span.style.backgroundClip = 'text';
+          span.style.webkitTextFillColor = 'transparent';
+        }
         element.appendChild(span);
         
         // Trigger animation
-        setTimeout(() => {
-          span.style.opacity = '1';
-          span.style.transform = 'translateY(0) scale(1)';
-        }, 100);
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            span.style.opacity = '1';
+            span.style.transform = 'translateY(0) scale(1)';
+          }, 50);
+        });
       });
     });
   }
@@ -326,5 +339,84 @@
       });
     });
   }
+
+  /* ===== BUTTON RIPPLE EFFECT ===== */
+  function createRipple(event) {
+    const button = event.currentTarget;
+    const rect = button.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple-effect');
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    button.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  }
+
+  document.querySelectorAll(
+    '.btn-primary, .btn-secondary, .btn-contact, .overlay-btn, .cert-preview-btn, button[type="submit"]'
+  ).forEach(button => {
+    button.addEventListener('click', createRipple);
+  });
+
+  /* ===== SMART NAVBAR HIDE/SHOW ON SCROLL ===== */
+  let lastScrollY = window.scrollY;
+  let navTicking = false;
+  const navbar = document.querySelector('.navbar');
+
+  function updateNavbar() {
+    const scrollY = window.scrollY;
+    if (navbar) {
+      if (scrollY > lastScrollY && scrollY > 100) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+    }
+    lastScrollY = scrollY;
+    navTicking = false;
+  }
+
+  if (navbar) {
+    navbar.style.transition = 'transform 0.3s ease, background 0.3s ease, border-color 0.3s ease';
+    window.addEventListener('scroll', () => {
+      if (!navTicking) {
+        requestAnimationFrame(updateNavbar);
+        navTicking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ===== ACTIVE NAV LINK ON SCROLL ===== */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
+
+  if (sections.length && navLinks.length) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach((link) => {
+              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  /* ===== FORM INPUT SHAKE ANIMATION ON INVALID ===== */
+  document.querySelectorAll('.form-group input, .form-group textarea').forEach((input) => {
+    input.addEventListener('invalid', function () {
+      this.classList.add('shake');
+      setTimeout(() => this.classList.remove('shake'), 500);
+    });
+  });
 
 })();
