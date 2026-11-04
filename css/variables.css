@@ -6,30 +6,108 @@
   box-sizing: border-box;
 }
 
+/* === CSS PROPERTIES FOR ANIMATED GRADIENTS === */
+@property --gradient-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
 :root {
-  /* === COLOR PALETTE === */
-  --accent:        #7c5cfc;
-  --accent-2:      #c084fc;
-  --accent-glow:   rgba(124, 92, 252, 0.6);
-  --accent-soft:   rgba(124, 92, 252, 0.12);
-  --accent-border: rgba(124, 92, 252, 0.25);
+  /* === DYNAMIC HSL COLOR SYSTEM === */
+  --accent-h: 259;
+  --accent-s: 96%;
+  --accent-l: 68%;
+  
+  /* Derived accent colors using HSL manipulation */
+  --accent:        hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --accent-light:  hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
+  --accent-dark:   hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 10%));
+  --accent-2:      hsl(calc(var(--accent-h) + 20), 90%, 75%);
+  --accent-3:      hsl(calc(var(--accent-h) + 40), 85%, 80%);
+  --accent-glow:   hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.6);
+  --accent-soft:   hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.12);
+  --accent-border: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.25);
 
   /* === BACKGROUNDS === */
-  --bg:   #090912;
-  --bg2:  #0f0f1c;
-  --bg3:  #16162a;
-  --card: #14142a;
+  --bg:   hsl(240, 28%, 6%);
+  --bg2:  hsl(240, 30%, 8%);
+  --bg3:  hsl(240, 32%, 12%);
+  --card: hsl(240, 35%, 11%);
 
   /* === TEXT === */
-  --text:       #f0eef8;
-  --text-muted: #8885a0;
-  --text-dim:   #5a5775;
+  --text:       hsl(256, 35%, 96%);
+  --text-muted: hsl(250, 18%, 58%);
+  --text-dim:   hsl(252, 14%, 40%);
 
   /* === BORDERS & RADIUS === */
-  --border:     rgba(124, 92, 252, 0.18);
-  --radius:     16px;
-  --radius-sm:  10px;
+  --border: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.18);
+  
+  /* Refined border-radius scale */
+  --radius-2xs: 4px;
   --radius-xs:  8px;
+  --radius-sm:  12px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+  --radius-xl:  32px;
+  --radius-full: 9999px;
+  
+  /* Legacy compatibility */
+  --radius:    var(--radius-md);
+
+  /* === FLUID TYPOGRAPHY SCALE === */
+  --text-xs:   clamp(0.7rem, 0.5vw + 0.6rem, 0.8rem);
+  --text-sm:   clamp(0.875rem, 0.7vw + 0.75rem, 0.95rem);
+  --text-base: clamp(1rem, 1vw + 0.85rem, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1.3vw + 0.9rem, 1.375rem);
+  --text-xl:   clamp(1.25rem, 1.6vw + 1rem, 1.75rem);
+  --text-2xl:  clamp(1.5rem, 2.2vw + 1.2rem, 2.25rem);
+  --text-3xl:  clamp(2rem, 3vw + 1.5rem, 3.5rem);
+
+  /* === CONSISTENT SPACING SCALE === */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+  --space-11: 192px;
+  --space-12: 256px;
+
+  /* === SOPHISTICATED SHADOW SYSTEM === */
+  --shadow-sm: 
+    0 1px 2px hsl(var(--accent-h), 40%, 10%, 0.08),
+    0 1px 4px hsl(var(--accent-h), 40%, 10%, 0.04);
+  
+  --shadow-md: 
+    0 4px 8px hsl(var(--accent-h), 40%, 10%, 0.12),
+    0 2px 4px hsl(var(--accent-h), 40%, 10%, 0.08),
+    0 0 1px hsl(var(--accent-h), 40%, 10%, 0.04);
+  
+  --shadow-lg: 
+    0 12px 24px hsl(var(--accent-h), 40%, 10%, 0.16),
+    0 6px 12px hsl(var(--accent-h), 40%, 10%, 0.12),
+    0 2px 4px hsl(var(--accent-h), 40%, 10%, 0.08);
+  
+  --shadow-glow: 
+    0 0 20px hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.3),
+    0 0 40px hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.15),
+    0 4px 12px hsl(var(--accent-h), 40%, 10%, 0.2);
+
+  --shadow-glow-intense:
+    0 0 30px hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.5),
+    0 0 60px hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.3),
+    0 0 90px hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.15),
+    0 8px 16px hsl(var(--accent-h), 40%, 10%, 0.3);
+
+  /* === GLASS-MORPHISM TOKENS === */
+  --glass-bg:     hsl(var(--accent-h), 30%, 15%, 0.1);
+  --glass-border: hsl(var(--accent-h), 50%, 70%, 0.15);
+  --glass-blur:   12px;
 
   /* === LAYOUT === */
   --nav-h:    70px;
@@ -40,23 +118,69 @@
   --transition:      0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   --transition-fast: 0.2s ease;
   --transition-med:  0.3s ease;
+  --transition-slow: 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-  /* === GRADIENTS === */
-  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-  --gradient-glow:   linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent));
+  /* === MULTI-DIMENSIONAL GRADIENTS === */
+  --gradient-angle: 135deg;
+  
+  --gradient-accent: linear-gradient(
+    135deg, 
+    hsl(var(--accent-h), 95%, 65%) 0%, 
+    hsl(calc(var(--accent-h) + 20), 85%, 70%) 50%, 
+    hsl(calc(var(--accent-h) + 40), 75%, 75%) 100%
+  );
+  
+  --gradient-glow: linear-gradient(
+    90deg, 
+    hsl(var(--accent-h), 95%, 65%) 0%,
+    hsl(calc(var(--accent-h) + 20), 90%, 70%) 33%,
+    hsl(calc(var(--accent-h) + 40), 85%, 75%) 66%,
+    hsl(var(--accent-h), 95%, 65%) 100%
+  );
+
+  --gradient-radial: radial-gradient(
+    circle at 50% 50%,
+    hsl(var(--accent-h), 95%, 65%) 0%,
+    hsl(calc(var(--accent-h) + 20), 85%, 70%) 40%,
+    hsl(calc(var(--accent-h) + 40), 75%, 75%) 70%,
+    transparent 100%
+  );
+
+  --gradient-mesh: 
+    linear-gradient(135deg, hsl(var(--accent-h), 95%, 65%, 0.1) 0%, transparent 50%),
+    linear-gradient(225deg, hsl(calc(var(--accent-h) + 40), 85%, 75%, 0.08) 0%, transparent 50%),
+    linear-gradient(315deg, hsl(calc(var(--accent-h) + 20), 90%, 70%, 0.06) 0%, transparent 50%);
 }
 
 /* === LIGHT THEME === */
 [data-theme="light"] {
-  --bg:         #f4f3ff;
-  --bg2:        #eceaff;
-  --bg3:        #e2dfff;
-  --card:       #ffffff;
-  --text:       #1a1733;
-  --text-muted: #5a5580;
-  --text-dim:   #9390b0;
-  --border:     rgba(124, 92, 252, 0.22);
-  --accent-soft: rgba(124, 92, 252, 0.08);
+  --bg:         hsl(248, 100%, 98%);
+  --bg2:        hsl(248, 100%, 96%);
+  --bg3:        hsl(248, 100%, 93%);
+  --card:       hsl(0, 0%, 100%);
+  --text:       hsl(250, 40%, 12%);
+  --text-muted: hsl(250, 20%, 45%);
+  --text-dim:   hsl(250, 12%, 62%);
+  --border:     hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.22);
+  --accent-soft: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.08);
+  
+  /* Adjusted shadows for light theme */
+  --shadow-sm: 
+    0 1px 2px hsl(var(--accent-h), 20%, 20%, 0.06),
+    0 1px 4px hsl(var(--accent-h), 20%, 20%, 0.03);
+  
+  --shadow-md: 
+    0 4px 8px hsl(var(--accent-h), 20%, 20%, 0.08),
+    0 2px 4px hsl(var(--accent-h), 20%, 20%, 0.06),
+    0 0 1px hsl(var(--accent-h), 20%, 20%, 0.03);
+  
+  --shadow-lg: 
+    0 12px 24px hsl(var(--accent-h), 20%, 20%, 0.12),
+    0 6px 12px hsl(var(--accent-h), 20%, 20%, 0.08),
+    0 2px 4px hsl(var(--accent-h), 20%, 20%, 0.06);
+
+  --glass-bg:     hsl(var(--accent-h), 100%, 98%, 0.4);
+  --glass-border: hsl(var(--accent-h), 80%, 60%, 0.2);
 }
 
 /* === BASE STYLES === */
@@ -67,13 +191,15 @@ html {
 
 body {
   font-family: "DM Sans", sans-serif;
+  font-size: var(--text-base);
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition-slow), color var(--transition);
   cursor: none;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img {
